@@ -1,0 +1,48 @@
+@mixin sign-up() {
+    background-color: white;
+    border-radius: 3px;
+    border: 2px solid #d500f9;
+    height: 35px;
+    line-height: 28px;
+    padding: 0 30px;
+    padding-left: 39px;
+    font-size: .8rem;
+    margin-left: 1%;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+ background-color: white;
+}
+
+.sign-up-in {
+    @include sign-up();
+}
+
+.menu-icon, .navbar-title {
+    position: relative;
+    top: -2.7px;
+}
+
+@media screen and (min-width: 576px) {
+    .sign-up-in {
+        @include sign-up();
+        padding: 0 18px;
+        padding-left: 29px;
+        height: 32px;
+        line-height: 25px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .sign-up-in {
+        @include sign-up();
+        padding: 0 22px;
+        padding-left: 36px;
+    }
+}
+@media screen and (min-width: 992px) {
+    .sign-up-in {
+        @include sign-up();
+    }
+}
+@media screen and (min-width: 1200px) {
+}
