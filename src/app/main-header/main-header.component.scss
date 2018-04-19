@@ -19,9 +19,9 @@ app-navbar {
     min-height: 300px;
     background-color: #440055;
 
-    div {
-        margin-bottom: -13%;
-    }
+        div {
+            margin-bottom: -13%;
+        }
 
     mat-list-item {
         height: 60px;
@@ -92,6 +92,14 @@ app-navbar {
         padding: 11px 20px;
         font-size: .9rem;
     }
+
+    .header-background div.head-part {
+        margin-bottom: -23%;
+    }
+
+    .header-background {
+        min-height: 250px;
+    }
 }
 @media screen and (min-width: 959px) {
     .header-card-right {
@@ -130,15 +138,60 @@ app-navbar {
         }
     }
     .service-container div span.center-card-item{
-        font-size: .70rem;
+        font-size: .73rem;
+        margin-top: 10px;
+        font-weight: 500;
+    }
+
+    .header-background div.head-part {
+        margin-bottom: -13%;
+    }
+
+    .header-background {
+        min-height: 300px;
+    }
+}
+@media screen and (min-width: 959px) and (max-width: 1100px) {
+
+    .service-container {
+        max-width: 80%;
+    }
+
+    .header-background {
+        mat-list-item {
+            height: 50px;
+    
+            h3 {
+                font-size: .82rem;
+            }
+            p {
+                font-size: .72em;
+                opacity: .8;
+            }
+            
+        }
+    }
+
+    .service-container div span.center-card-item{
+        font-size: .75rem;
         margin-top: 10px;
         font-weight: 500;
     }
 }
-@media screen and (min-width: 992px) {
 
+@media screen and (min-width: 1101px) and (max-width: 1281px) {
+    .service-container {
+        max-width: 73%;
+    }
+
+    .header-background {
+        mat-list-item {
+            height: 55px;            
+        }
+    }
 }
-@media screen and (min-width: 1279px) {
+
+@media screen and (min-width: 1280px) {
     .header-card-right {
         @include header-card-head();
         // background: linear-gradient(320deg,#A300AD, #DB00D5);
@@ -176,6 +229,52 @@ app-navbar {
     }
 
     .service-container div span.center-card-item{
-        font-size: .8rem;
+        font-size: .79rem;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .header-background div.head-part {
+        margin: 0;
+        margin-top: 50px;
+    }
+
+    .header-background {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .nav-spacer {
+        height: 56px;
+    }
+
+    .header-card-center {
+        @include header-card-head();
+        background: #DB00D5;
+        right: -20px;
+        left: -20px;
+
+        span {
+            line-height: 20px;
+        }
+    }
+
+    .service-container div span.center-card-item{
+        margin-top: 14px;
+        font-size: .83rem;
+    }
+
+    .header-background .service-container div img {
+        width: 58%
+    }
+
+    .header-card-right {
+        @include header-card-head();
+        background: linear-gradient(180deg,#A300AD, #DB00D5);
+    }
+
+    .header-card-left {
+        @include header-card-head();
+        background: linear-gradient(0deg,#A300AD, #DB00D5);
     }
 }

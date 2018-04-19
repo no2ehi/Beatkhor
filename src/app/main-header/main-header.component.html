@@ -1,10 +1,10 @@
 <app-navbar></app-navbar>
 
 <div class="nav-spacer"></div>
-<div class="header-background" fxLayout="row" fxLayoutAlign="center center">
+<div class="header-background" fxLayout="row" fxLayout.xs="column" fxLayoutAlign.xs="start stretch" fxLayoutAlign.gt-xs="center center">
 
-  <div fxFlex="1 50%" fxFlex.gt-sm="1 30%" fxLayoutAlign="center center">
-    <mat-card fxFlex="75" fxFlex.gt-sm="75" fxFlex.gt-md="65" [class.mat-elevation-z7]="true">
+  <div fxFlex.xs="1 100%" fxFlex.sm="1 50%" fxFlex.gt-sm="1 30%" fxLayoutAlign="center center" class="head-part">
+    <mat-card fxFlex.xs="80" fxFlex.sm="75" fxFlex.gt-sm="67" [class.mat-elevation-z7]="true">
       <div class="header-card-right" fxLayoutAlign="center center" [class.mat-elevation-z5]="true">
         <span>تازه های فروشگاه</span>
       </div>
@@ -25,8 +25,9 @@
     </mat-card>
   </div>
 
-  <div fxFlex="1 30%" fxLayoutAlign="center center" fxLayout="row" fxHide="true" fxHide.gt-sm="false">
-    <mat-card fxFlex="67" fxFlex.gt-sm="80" fxFlex.gt-md="67" [class.mat-elevation-z10]="true" class="service-container" fxLayout="row ">
+  <div fxFlex="1 30%" fxLayoutAlign="center center" fxLayout="row" fxHide.xs="false" fxHide.sm="true" fxHide.gt-sm="false"
+    class="head-part">
+    <mat-card fxFlex.xs="80" fxFlex.sm="80" fxFlex.gt-md="65" [class.mat-elevation-z10]="true" class="service-container" fxLayout="row ">
       <div class="header-card-center" fxLayoutAlign="center center" [class.mat-elevation-z5]="true">
         <span>خدمات بیت‌خور</span>
       </div>
@@ -50,8 +51,8 @@
     </mat-card>
   </div>
 
-  <div fxFlex="1 50%" fxFlex.gt-sm="1 30%" fxLayoutAlign="center center">
-    <mat-card fxFlex="75" fxFlex.gt-sm="75" fxFlex.gt-md="65" [class.mat-elevation-z7]="true">
+  <div fxFlex.xs="1 100%" fxFlex.sm="1 50%" fxFlex.gt-sm="1 30%" fxLayoutAlign="center center" class="head-part">
+    <mat-card fxFlex.xs="80" fxFlex.sm="75" fxFlex.gt-sm="67" [class.mat-elevation-z7]="true" class="instrumental-container">
       <div class="header-card-left" fxLayoutAlign="center center" [class.mat-elevation-z5]="true">
         <span>تازه های اینسترومنتال</span>
       </div>
