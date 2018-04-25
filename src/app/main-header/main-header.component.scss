@@ -111,7 +111,7 @@ app-navbar {
     }
 
     .header-background {
-        min-height: 250px;
+        min-height: 260px;
     }
  
 }
@@ -162,7 +162,7 @@ app-navbar {
     }
 
     .header-background {
-        min-height: 300px;
+        min-height: 260px;
     }
 }
 @media screen and (min-width: 959px) and (max-width: 1100px) {
@@ -198,6 +198,10 @@ app-navbar {
         font-size: .75rem;
         margin-top: 10px;
     }
+
+    .header-background {
+        min-height: 300px;
+    }
 }
 
 @media screen and (min-width: 1101px) and (max-width: 1281px) {
@@ -206,6 +210,7 @@ app-navbar {
     }
 
     .header-background {
+        min-height: 300px;
         mat-list-item {
             height: 55px;            
         }
@@ -235,6 +240,7 @@ app-navbar {
     }
 
     .header-background {
+        min-height: 300px;
         mat-list-item {
             height: 60px;
     
