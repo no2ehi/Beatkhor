@@ -16,8 +16,22 @@ app-navbar {
 }
 
 .header-background {
-    min-height: 300px;
+    min-height: 40vh;
     background-color: #440055;
+    // background: -webkit-linear-gradient(30deg, #440055, #8d006e, rgb(165, 37, 159), rgb(135, 34, 160), #9c007b, #9418b3);
+    background: linear-gradient(30deg, #450057, #860f6d, rgb(156, 36, 150), rgb(130, 32, 155), #960075, #8716a3);
+    left:0;
+    right: 0;
+    top: 0;
+    // bottom: 48vh;
+    padding-top: 13vh;
+    position: absolute;
+    background-size: 300% 300%;
+
+  -webkit-animation: rainbow 30s ease infinite;
+  -z-animation: rainbow 30s ease infinite;
+  -o-animation: rainbow 30s ease infinite;
+    animation: rainbow 30s ease infinite;
 
         div {
             margin-bottom: -13%;
@@ -107,11 +121,11 @@ app-navbar {
     }
 
     .header-background div.head-part {
-        margin-bottom: -19%;
+        margin-bottom: -10%;
     }
 
     .header-background {
-        min-height: 260px;
+        min-height: 320px;
     }
  
 }
@@ -158,7 +172,7 @@ app-navbar {
     }
 
     .header-background div.head-part {
-        margin-bottom: -13%;
+        margin-bottom: -9.5%;
     }
 
     .header-background {
@@ -240,7 +254,7 @@ app-navbar {
     }
 
     .header-background {
-        min-height: 300px;
+        min-height: 380px;
         mat-list-item {
             height: 60px;
     
@@ -267,7 +281,7 @@ app-navbar {
     }
 
     .header-background {
-        padding-top: 25px;
+        padding-top: 38px;
         padding-bottom: 25px;
     }
 
@@ -304,4 +318,25 @@ app-navbar {
         @include header-card-head();
         background: linear-gradient(0deg,#A300AD, #DB00D5);
     }
+}
+
+@-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@keyframes rainbow { 
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
 }

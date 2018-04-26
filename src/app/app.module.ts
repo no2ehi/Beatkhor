@@ -9,22 +9,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpINterceptor } from './http-interceptor';
 // Added Components
-import { NavbarComponent } from './navbar/navbar.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { RegisterLoginComponent } from './register-login/register-login.component';
-import { IndexComponent } from './index/index.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { LoginNavbarComponent } from './navbar/login-navbar/login-navbar.component';
+import { PrimaryNavbarComponent } from './navbar/primary-navbar/primary-navbar.component';
 // Added Services
 import { MainService } from './services/main.service';
-import { HomePageComponent } from './home-page/home-page.component';
+import { LoginFormComponent } from './register-login/login-form/login-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     MainHeaderComponent,
     RegisterLoginComponent,
-    IndexComponent,
-    HomePageComponent
+    HomePageComponent,
+    LoginNavbarComponent,
+    PrimaryNavbarComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,

@@ -58,6 +58,13 @@ span, p, h1, h2, h3, h4, h5, h6, mat-toolbar {
 	font-weight: bold;
 }
 
+.mat-input-suffix {
+	position: relative;
+	bottom: -6.5px;
+	left: 5px;
+	cursor: pointer;
+}
+
 @import '~@angular/material/theming';
 @include mat-core();
 

@@ -43,16 +43,13 @@ export class MainService {
         path: '',
         token: false,
         menu: false,
-        roles: ['مدیر', 'مدیر ارشد', 'آهنگساز', 'خواننده', 'طراح']
-      },
-      'default': {
-        token: false,
-        menu: false,
+        all: true,
         roles: ['مدیر', 'مدیر ارشد', 'آهنگساز', 'خواننده', 'طراح']
       },
       'login': {
         token: false,
         menu: false,
+        all: true,
         roles: ['مدیر', 'مدیر ارشد', 'آهنگساز', 'خواننده', 'طراح']
       }
     };
@@ -61,6 +58,10 @@ export class MainService {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const role = this.getRole();
     const routesRoles = this.getRoutesRoles();
+
+    if (routesRoles[route.routeConfig.path].all) {
+      return true;
+    }
 
     if (routesRoles[route.routeConfig.path].token === !!this.getToken()) {
       if (role) {

@@ -1,3 +1,14 @@
-<p>
-  register-login works!
-</p>
+<app-login-navbar></app-login-navbar>
+<div class="nav-spacer"></div>
+
+<div class="header-background" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
+  <div fxFlex="1 30%" fxLayoutAlign="center start" fxLayout="row" class="head-part">
+    <mat-card fxFlex.xs="82" fxFlex.sm="42" fxFlex.md="29" fxFlex.lg="24" xFlex.xg="22" [class.mat-elevation-z10]="true" class="login-container"
+      fxLayout="row" fxLayoutAlign="center center">
+      <div class="header-card-center" fxLayoutAlign="center center" [class.mat-elevation-z5]="true">
+        <span>ورود کاربران</span>
+      </div>
+      <app-login-form fxFlex="100" fxLayoutAlign="center center"></app-login-form>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<mat-toolbar [class.mat-elevation-z6]="true">
+  <span fxFlex="row" fxHide="false" fxHide.gt-sm="true">
+    <a mat-icon-button>
+      <mat-icon class="menu-icon">menu</mat-icon>
+    </a>
+    <a mat-button class="navbar-title">بیت خور</a>
+  </span>
+
+  <span fxFlex="row" fxHide="true" fxHide.gt-sm="false" class="menu-container">
+    <a mat-button>بیت خور</a>
+    <a mat-button>بانک صدا</a>
+    <a mat-button>لوپ و سمپل</a>
+    <a mat-button>شعر / تکست</a>
+    <a mat-button>بیت جدید</a>
+    <a mat-button>نرم افزار</a>
+  </span>
+  <a mat-raised-button class="sign-up-in" fxHide="true" fxHide.gt-xs="false" routerLink="login">ورود / ثبت نام</a>
+</mat-toolbar>

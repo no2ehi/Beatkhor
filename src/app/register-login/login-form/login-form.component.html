@@ -1,0 +1,9 @@
+<form fxLayout="column" fxLayoutAlign="center center">
+  <mat-form-field class="full-width-field" fxFlex="100">
+    <input matInput placeholder="نام کاربری">
+  </mat-form-field>
+  <mat-form-field class="full-width-field">
+    <input [type]="hide ? 'text' : 'password' " matInput formControlName="password" placeholder="رمز عبور ">
+    <mat-icon matSuffix (click)="hide=!hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+  </mat-form-field>
+</form>

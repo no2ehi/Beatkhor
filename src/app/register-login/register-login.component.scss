@@ -1,0 +1,116 @@
+@mixin header-card-head() {
+    position: absolute;
+    top: -30px;
+    right: -20px;
+    left: -20px;
+    color: white;
+    border-radius: 3px;
+    padding: 12px 20px;
+}
+
+app-login-navbar {
+    display: block;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.header-background {
+    min-height: 200px;
+    background-color: #440055; 
+}
+
+@media screen and (min-width: 0) {
+    .nav-spacer {
+        height: 56px;
+    }
+    .login-space {
+        height: 30vh;
+    }
+    .header-background {
+        min-height: calc(100vh - 56px);
+        background: #4568dc;
+        // background: -webkit-linear-gradient(30deg, #dd00f3, #ab48ee, #da20eb, #8c45dc, #c710d8);
+        background: linear-gradient(30deg, #bd00ce, #963ed1, #b21bc0, #933dc4, #ab0eb9);
+        left:0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+      background-size: 200% 200%;
+    
+      -webkit-animation: rainbow 34s ease infinite;
+      -z-animation: rainbow 34s ease infinite;
+      -o-animation: rainbow 34s ease infinite;
+        animation: rainbow 34s ease infinite;
+    }
+    .header-card-center {
+        @include header-card-head();
+        background: #DB00D5;
+        right: -18px;
+        left: -18px;
+    }
+    .login-container {
+        margin-top: 18vh;
+        margin-bottom: 30px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .nav-spacer {
+        height: 64px;
+    }
+    .header-background {
+        min-height: calc(100vh - 64px);
+    }
+    .header-card-center {
+        @include header-card-head();
+        background: #DB00D5;
+        right: -28px;
+        left: -28px;
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}   
+
+@media screen and (min-width: 959px) {
+    .login-container {
+        margin-top: 12vh;
+    }
+}
+
+@media screen and (min-width: 959px) and (max-width: 1100px) {}
+
+@media screen and (min-width: 1101px) and (max-width: 1281px) {
+
+}
+
+@media screen and (min-width: 1280px) {
+    .login-container {
+        margin-top: 22vh;
+    }
+    
+}
+
+@-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@keyframes rainbow { 
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}

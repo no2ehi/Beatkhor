@@ -1,0 +1,19 @@
+// component
+.full-width-field {
+    width: 100%;
+    line-height: 22px;
+}
+form {
+    width: 80%;
+}
+
+@media screen and (min-width: 0) {
+    form {
+        width: 95%;
+    }
+}
+@media screen and (min-width: 600px) {
+    form {
+        width: 89%;
+    }
+}
