@@ -20,6 +20,21 @@ app-login-navbar {
     background-color: #440055; 
 }
 
+.full-width {
+    width: 100%;
+}
+
+.footer-container {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 100px;
+    color: white;
+    font-size: .95em;
+    padding: 0 80px;
+    font-family: iranyekan, sans-serif, arial;
+}
+
 @media screen and (min-width: 0) {
     .nav-spacer {
         height: 56px;
@@ -30,7 +45,7 @@ app-login-navbar {
     .header-background {
         min-height: calc(100vh - 56px);
         background: #4568dc;
-        // background: -webkit-linear-gradient(30deg, #dd00f3, #ab48ee, #da20eb, #8c45dc, #c710d8);
+        background: -webkit-linear-gradient(30deg, #bd00ce, #963ed1, #b21bc0, #933dc4, #ab0eb9);
         background: linear-gradient(30deg, #bd00ce, #963ed1, #b21bc0, #933dc4, #ab0eb9);
         left:0;
         right: 0;

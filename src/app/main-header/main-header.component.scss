@@ -18,13 +18,12 @@ app-navbar {
 .header-background {
     min-height: 40vh;
     background-color: #440055;
-    // background: -webkit-linear-gradient(30deg, #440055, #8d006e, rgb(165, 37, 159), rgb(135, 34, 160), #9c007b, #9418b3);
+    background: -webkit-linear-gradient(30deg, #450057, #860f6d, rgb(156, 36, 150), rgb(130, 32, 155), #960075, #8716a3);
     background: linear-gradient(30deg, #450057, #860f6d, rgb(156, 36, 150), rgb(130, 32, 155), #960075, #8716a3);
     left:0;
     right: 0;
     top: 0;
     // bottom: 48vh;
-    padding-top: 13vh;
     position: absolute;
     background-size: 300% 300%;
 
@@ -34,7 +33,7 @@ app-navbar {
     animation: rainbow 30s ease infinite;
 
         div {
-            margin-bottom: -13%;
+            margin-bottom: -100px;
         }
 
     mat-list-item {
@@ -70,12 +69,15 @@ app-navbar {
 }
 
 .header-background div.header-statement {
-    margin-bottom: 0;
+    // margin-bottom: 0;
     color: white;
     font-size: 1em;
 }
 
 @media screen and (min-width: 0) {
+    .header-background div.head-part {
+        max-width: 49%;
+    }
     .header-card-right {
         @include header-card-head();
         background: linear-gradient(320deg,#A300AD, #DB00D5);
@@ -125,6 +127,7 @@ app-navbar {
     }
 
     .header-background {
+        padding-top: 100px;
         min-height: 320px;
     }
  
@@ -172,7 +175,7 @@ app-navbar {
     }
 
     .header-background div.head-part {
-        margin-bottom: -9.5%;
+        margin-bottom: -148px;
     }
 
     .header-background {
@@ -187,13 +190,15 @@ app-navbar {
 
     .service-container {
         max-width: 80%;
+        padding-top: 100px;
     }
 
     .header-background div.head-part {
-        margin-bottom: -15%;
+        margin-bottom: -75px;
     }
 
     .header-background {
+        padding-top: 130px;
         mat-list-item {
             height: 50px;
     
@@ -224,11 +229,16 @@ app-navbar {
     }
 
     .header-background {
-        min-height: 300px;
+        min-height: 350px;
+        padding-top: 140px;
         mat-list-item {
             height: 55px;            
         }
     }
+    .header-background div.head-part {
+        margin-bottom: -85px;
+    }
+
 }
 
 @media screen and (min-width: 1280px) {
@@ -253,8 +263,13 @@ app-navbar {
         // background: linear-gradient(40deg,#A300AD, #DB00D5);
     }
 
+    .header-background div.head-part {
+        margin-bottom: -140px;
+    }
+
     .header-background {
-        min-height: 380px;
+        padding-top: 115px;
+        min-height: 360px;
         mat-list-item {
             height: 60px;
     
@@ -281,7 +296,7 @@ app-navbar {
     }
 
     .header-background {
-        padding-top: 38px;
+        padding-top: 142px;
         padding-bottom: 25px;
     }
 

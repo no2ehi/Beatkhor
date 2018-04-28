@@ -2,8 +2,10 @@
 .full-width-field {
     width: 100%;
     line-height: 22px;
+    font-family: iranyekan, sans-serif, arial;
 }
 form {
+    margin-top: 6px;
     width: 80%;
 }
 
@@ -15,5 +17,13 @@ form {
 @media screen and (min-width: 600px) {
     form {
         width: 89%;
+    }
+}
+
+.button-container {
+    min-width: 100%;
+    margin-top: 15px;
+    a {
+        margin: 0 3px;
     }
 }

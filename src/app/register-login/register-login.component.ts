@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterLoginComponent implements OnInit {
 
+  mode = 'login';
   constructor() { }
 
   ngOnInit() {

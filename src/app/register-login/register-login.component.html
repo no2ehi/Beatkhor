@@ -8,7 +8,18 @@
       <div class="header-card-center" fxLayoutAlign="center center" [class.mat-elevation-z5]="true">
         <span>ورود کاربران</span>
       </div>
-      <app-login-form fxFlex="100" fxLayoutAlign="center center"></app-login-form>
+      <div [ngSwitch]="mode" class="full-width">
+        <div class="full-width" *ngSwitchCase="'login'">
+          <app-login-form fxFlex="100" fxLayoutAlign="center center"></app-login-form>
+        </div>
+        <div *ngSwitchCase="'register'">
+
+        </div>
+      </div>
     </mat-card>
+  </div>
+  <div class="footer-container" fxLayoutAlign="space-between center">
+    <p>تمامی حقوق مطالب و قالب برای بیت خور محفوظ است و هرگونه کپی برداری بدون ذکر منبع ممنوع می باشد.</p>
+    <p class="copyright">Copyright © 2017 - 2018 Beatkhor.ir</p>
   </div>
 </div>
