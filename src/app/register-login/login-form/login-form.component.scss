@@ -1,7 +1,8 @@
-// component
 .full-width-field {
+    :not(mat-error) {
+        line-height: 20px;
+    }
     width: 100%;
-    line-height: 22px;
     font-family: iranyekan, sans-serif, arial;
 }
 form {
@@ -22,8 +23,13 @@ form {
 
 .button-container {
     min-width: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
+font-size: .9em;
     a {
         margin: 0 3px;
     }
+}
+
+mat-form-field {
+    margin-top: 3px;
 }

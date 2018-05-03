@@ -8,6 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpINterceptor } from './http-interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
 // Added Components
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { RegisterLoginComponent } from './register-login/register-login.component';
@@ -34,7 +35,8 @@ import { LoginFormComponent } from './register-login/login-form/login-form.compo
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     MainService,

@@ -1,13 +1,24 @@
-<form fxLayout="column" fxLayoutAlign="center center">
+<form fxLayout="column" fxLayoutAlign="center center" [formGroup]="loginForm">
   <mat-form-field class="full-width-field" fxFlex="100">
-    <input matInput placeholder="نام کاربری">
+    <input matInput formControlName="userName" placeholder="نام کاربری یا ایمیل">
+
+    <mat-error *ngIf="loginForm.controls['userName'].invalid && !loginForm.value.userName ">
+      نام کاربری را وارد کنید.
+    </mat-error>
   </mat-form-field>
   <mat-form-field class="full-width-field">
-    <input [type]="hide ? 'text' : 'password' " matInput formControlName="password" placeholder="رمز عبور ">
-    <mat-icon matSuffix (click)="hide=!hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+    <input [type]="hidePass ? 'text' : 'password' " matInput formControlName="password" placeholder="رمز عبور ">
+    <mat-icon matSuffix (click)="hidePass=!hidePass">{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
+
+    <mat-error *ngIf="loginForm.controls['password'].invalid && loginForm.value.password ">
+      گذرواژه معتبر نیست!
+    </mat-error>
+    <mat-error *ngIf="loginForm.controls['password'].invalid && !loginForm.value.password ">
+      گذرواژه را وارد کنید.
+    </mat-error>
   </mat-form-field>
   <div class="button-container" fxLayout="row" fxLayoutAlign="end center">
     <a mat-button color="primary">ثبت نام</a>
-    <a mat-raised-button color="primary">ورود</a>
+    <a mat-raised-button color="primary" [disabled]="loginForm.invalid">ورود</a>
   </div>
 </form>

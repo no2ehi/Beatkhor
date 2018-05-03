@@ -31,7 +31,6 @@ app-login-navbar {
     height: 100px;
     color: white;
     font-size: .95em;
-    padding: 0 80px;
     font-family: iranyekan, sans-serif, arial;
 }
 
@@ -66,14 +65,23 @@ app-login-navbar {
         left: -18px;
     }
     .login-container {
-        margin-top: 18vh;
+        margin-top: 165px;
         margin-bottom: 30px;
         padding-top: 30px;
         padding-bottom: 30px;
     }
+    .copyright {
+        font-size: .95em;
+    }
+    .footer-container {
+        padding: 0 20px;
+    }
 }
 
 @media screen and (min-width: 600px) {
+    .footer-container {
+        padding: 0 80px;
+    }
     .nav-spacer {
         height: 64px;
     }
@@ -90,21 +98,13 @@ app-login-navbar {
     }
 }   
 
-@media screen and (min-width: 959px) {
-    .login-container {
-        margin-top: 12vh;
-    }
-}
-
+@media screen and (min-width: 959px) {}
 @media screen and (min-width: 959px) and (max-width: 1100px) {}
-
-@media screen and (min-width: 1101px) and (max-width: 1281px) {
-
-}
+@media screen and (min-width: 1101px) and (max-width: 1281px) {}
 
 @media screen and (min-width: 1280px) {
     .login-container {
-        margin-top: 22vh;
+        margin-top: 180px;
     }
     
 }

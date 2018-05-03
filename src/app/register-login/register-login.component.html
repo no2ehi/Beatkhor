@@ -3,8 +3,8 @@
 
 <div class="header-background" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
   <div fxFlex="1 30%" fxLayoutAlign="center start" fxLayout="row" class="head-part">
-    <mat-card fxFlex.xs="82" fxFlex.sm="42" fxFlex.md="29" fxFlex.lg="24" xFlex.xg="22" [class.mat-elevation-z10]="true" class="login-container"
-      fxLayout="row" fxLayoutAlign="center center">
+    <mat-card fxFlex.xs="82" fxFlex.sm="42" fxFlex.md="29" fxFlex.lg="24" fxFlex.gt-lg="22" [class.mat-elevation-z10]="true"
+      class="login-container" fxLayout="row" fxLayoutAlign="center center">
       <div class="header-card-center" fxLayoutAlign="center center" [class.mat-elevation-z5]="true">
         <span>ورود کاربران</span>
       </div>
@@ -18,8 +18,8 @@
       </div>
     </mat-card>
   </div>
-  <div class="footer-container" fxLayoutAlign="space-between center">
-    <p>تمامی حقوق مطالب و قالب برای بیت خور محفوظ است و هرگونه کپی برداری بدون ذکر منبع ممنوع می باشد.</p>
+  <div class="footer-container" fxLayout="row" fxLayout.xs-md="column" fxLayout.gt-md="row" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="space-between center">
+    <p fxHide="true" fxHide.gt-sm="false">تمامی حقوق مطالب و قالب برای بیت‌خور محفوظ است و هرگونه کپی برداری بدون ذکر منبع ممنوع است.</p>
     <p class="copyright">Copyright © 2017 - 2018 Beatkhor.ir</p>
   </div>
 </div>

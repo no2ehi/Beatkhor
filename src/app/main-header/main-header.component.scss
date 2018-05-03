@@ -18,8 +18,8 @@ app-navbar {
 .header-background {
     min-height: 40vh;
     background-color: #440055;
-    background: -webkit-linear-gradient(30deg, #450057, #860f6d, rgb(156, 36, 150), rgb(130, 32, 155), #960075, #8716a3);
-    background: linear-gradient(30deg, #450057, #860f6d, rgb(156, 36, 150), rgb(130, 32, 155), #960075, #8716a3);
+    background: -webkit-linear-gradient(30deg,#450057, #860f6d, #834d9b, rgb(130, 32, 155), #88006a, #8716a3);
+    background: linear-gradient(30deg, #450057, #860f6d, #834d9b, rgb(130, 32, 155), #88006a, #8716a3);
     left:0;
     right: 0;
     top: 0;
@@ -75,9 +75,9 @@ app-navbar {
 }
 
 @media screen and (min-width: 0) {
-    .header-background div.head-part {
-        max-width: 49%;
-    }
+    // .header-background div.head-part {
+        // max-width: 49%; lackberry
+    // }
     .header-card-right {
         @include header-card-head();
         background: linear-gradient(320deg,#A300AD, #DB00D5);
