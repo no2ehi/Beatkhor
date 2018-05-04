@@ -3,7 +3,7 @@
     <input matInput formControlName="nickName" placeholder="نام یا نام مستعار">
 
     <mat-hint *ngIf="registerForm.controls['nickName'].pristine && !registerForm.value.nickName ">
-      نام نمایشی شما در بخش های وبسایت
+      نام نمایشی شما در بخش‌های وبسایت
     </mat-hint>
     <mat-error *ngIf="registerForm.controls['nickName'].invalid && !registerForm.value.nickName ">
       نام یا نام مستعار را وارد کنید.
@@ -24,7 +24,7 @@
     <mat-icon matSuffix (click)="hidePass=!hidePass">{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
 
     <mat-hint *ngIf="registerForm.controls['password'].pristine && !registerForm.value.password ">
-      رمز عبور باید حداقل دارای 6 کاراکتر باشد.
+      رمز عبور باید حداقل دارای ۶ کاراکتر باشد.
     </mat-hint>
     <mat-error *ngIf="registerForm.controls['password'].invalid && registerForm.value.password ">
       رمز عبور معتبر نیست!
