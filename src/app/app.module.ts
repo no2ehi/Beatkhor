@@ -32,7 +32,6 @@ import { AuthService } from './services/auth.service';
     LoginFormComponent,
     RegisterFormComponent,
     PageNotFoundComponent,
-    MainComponent,
     IndexComponent
   ],
   imports: [
