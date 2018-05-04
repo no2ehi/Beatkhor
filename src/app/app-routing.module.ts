@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RegisterLoginComponent } from './register-login/register-login.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { MainComponent } from './main/main.component';
+import { RegisterLoginComponent } from './pages/register-login/register-login.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { AuthService } from './services/auth.service';
 import { IndexComponent } from './pages/index/index.component';
 
