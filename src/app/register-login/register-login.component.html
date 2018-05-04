@@ -6,14 +6,17 @@
     <mat-card fxFlex.xs="82" fxFlex.sm="42" fxFlex.md="29" fxFlex.lg="24" fxFlex.gt-lg="22" [class.mat-elevation-z10]="true"
       class="login-container" fxLayout="row" fxLayoutAlign="center center">
       <div class="header-card-center" fxLayoutAlign="center center" [class.mat-elevation-z5]="true">
-        <span>ورود کاربران</span>
+        <ng-container [ngSwitch]="mode">
+          <span *ngSwitchCase="'login'">ورود کاربران</span>
+          <span *ngSwitchCase="'register'">ثبت نام کاربران</span>
+        </ng-container>
       </div>
       <div [ngSwitch]="mode" class="full-width">
-        <div class="full-width" *ngSwitchCase="'login'">
-          <app-login-form fxFlex="100" fxLayoutAlign="center center"></app-login-form>
+        <div *ngSwitchCase="'login'" class="full-width">
+          <app-login-form [@fadeInOut] (onModeChange)="changeMode($event)" fxFlex="100" fxLayoutAlign="center center"></app-login-form>
         </div>
-        <div *ngSwitchCase="'register'">
-
+        <div *ngSwitchCase="'register'" class="full-width">
+          <app-register-form [@fadeInOut] (onModeChange)="changeMode($event)" fxFlex="100" fxLayoutAlign="center center"></app-register-form>
         </div>
       </div>
     </mat-card>

@@ -18,6 +18,7 @@ import { PrimaryNavbarComponent } from './navbar/primary-navbar/primary-navbar.c
 // Added Services
 import { MainService } from './services/main.service';
 import { LoginFormComponent } from './register-login/login-form/login-form.component';
+import { RegisterFormComponent } from './register-login/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LoginFormComponent } from './register-login/login-form/login-form.compo
     HomePageComponent,
     LoginNavbarComponent,
     PrimaryNavbarComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,

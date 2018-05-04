@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainService } from '../../services/main.service';
 
@@ -10,8 +10,9 @@ import { MainService } from '../../services/main.service';
 })
 export class LoginFormComponent implements OnInit {
 
+  @Output() public onModeChange = new EventEmitter();
   loginForm: FormGroup;
-  public hidePass;
+  hidePass;
 
   constructor(
     private mainService: MainService,
@@ -25,12 +26,19 @@ export class LoginFormComponent implements OnInit {
   /**
    * @description Creating the form using FormBuilder.
    */
-  createLoginForm() {
+  createLoginForm(): void {
     const fromControles = {
       userName: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]]
     }
     this.loginForm = this.fb.group(fromControles);
+  }
+
+  /**
+   * @description Emit the "onModeChange" event to tell parent "change to register mode" component
+   */
+  changeMode(): void {
+    this.onModeChange.emit('register');
   }
 
 }

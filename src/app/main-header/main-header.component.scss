@@ -75,9 +75,6 @@ app-navbar {
 }
 
 @media screen and (min-width: 0) {
-    // .header-background div.head-part {
-        // max-width: 49%; lackberry
-    // }
     .header-card-right {
         @include header-card-head();
         background: linear-gradient(320deg,#A300AD, #DB00D5);
@@ -286,6 +283,12 @@ app-navbar {
 
     .service-container div span.center-card-item{
         font-size: .79rem;
+    }
+}
+
+@media screen and (max-width: 959px) and (min-width: 599px) {
+    .header-background div.head-part {
+        max-width: 49%;
     }
 }
 

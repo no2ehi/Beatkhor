@@ -18,7 +18,7 @@
     </mat-error>
   </mat-form-field>
   <div class="button-container" fxLayout="row" fxLayoutAlign="end center">
-    <a mat-button color="primary">ثبت نام</a>
+    <a mat-button color="primary" (click)="changeMode()">ثبت نام</a>
     <a mat-raised-button color="primary" [disabled]="loginForm.invalid">ورود</a>
   </div>
 </form>

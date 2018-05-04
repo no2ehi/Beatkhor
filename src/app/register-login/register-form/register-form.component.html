@@ -1,0 +1,51 @@
+<form fxLayout="column" fxLayoutAlign="center center" [formGroup]="registerForm">
+  <mat-form-field class="full-width-field" fxFlex="100">
+    <input matInput formControlName="nickName" placeholder="نام یا نام مستعار">
+
+    <mat-hint *ngIf="registerForm.controls['nickName'].pristine && !registerForm.value.nickName ">
+      نام نمایشی شما در بخش های وبسایت
+    </mat-hint>
+    <mat-error *ngIf="registerForm.controls['nickName'].invalid && !registerForm.value.nickName ">
+      نام یا نام مستعار را وارد کنید.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width-field" fxFlex="100">
+    <input matInput formControlName="email" placeholder="ایمیل">
+
+    <mat-hint *ngIf="registerForm.controls['email'].pristine && !registerForm.value.email ">
+      ایمیل شما به کسی نمایش داده نمیشود.
+    </mat-hint>
+    <mat-error *ngIf="registerForm.controls['email'].invalid && !registerForm.value.email ">
+      ایمیل را وارد کنید.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width-field">
+    <input [type]="hidePass ? 'text' : 'password' " matInput formControlName="password" placeholder="رمز عبور ">
+    <mat-icon matSuffix (click)="hidePass=!hidePass">{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
+
+    <mat-hint *ngIf="registerForm.controls['password'].pristine && !registerForm.value.password ">
+      رمز عبور باید حداقل دارای 6 کاراکتر باشد.
+    </mat-hint>
+    <mat-error *ngIf="registerForm.controls['password'].invalid && registerForm.value.password ">
+      رمز عبور معتبر نیست!
+    </mat-error>
+    <mat-error *ngIf="registerForm.controls['password'].invalid && !registerForm.value.password ">
+      رمز عبور را وارد کنید.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width-field">
+    <input [type]="hidePass ? 'text' : 'password' " matInput formControlName="passwordConfirm" placeholder="تکرار رمز عبور">
+    <mat-icon matSuffix (click)="hidePass=!hidePass">{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
+
+    <mat-error *ngIf="registerForm.controls['passwordConfirm'].invalid && registerForm.value.passwordConfirm ">
+      رمز عبور همخوانی ندارد.
+    </mat-error>
+    <mat-error *ngIf="registerForm.controls['passwordConfirm'].invalid && !registerForm.value.passwordConfirm ">
+      تکرار رمز عبور را وارد کنید.
+    </mat-error>
+  </mat-form-field>
+  <div class="button-container" fxLayout="row" fxLayoutAlign="end center">
+    <a mat-button color="primary" (click)="changeMode()">ورود</a>
+    <a mat-raised-button color="primary" [disabled]="registerForm.invalid">ثبت نام</a>
+  </div>
+</form>

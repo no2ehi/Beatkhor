@@ -28,7 +28,7 @@ app-login-navbar {
     position: absolute;
     bottom: 0;
     width: 100vw;
-    height: 100px;
+    height: 12vh;
     color: white;
     font-size: .95em;
     font-family: iranyekan, sans-serif, arial;
@@ -38,11 +38,8 @@ app-login-navbar {
     .nav-spacer {
         height: 56px;
     }
-    .login-space {
-        height: 30vh;
-    }
     .header-background {
-        min-height: calc(100vh - 56px);
+        min-height: 640px;
         background: #4568dc;
         background: -webkit-linear-gradient(30deg, #bd00ce, #963ed1, #b21bc0, #933dc4, #ab0eb9);
         background: linear-gradient(30deg, #bd00ce, #963ed1, #b21bc0, #933dc4, #ab0eb9);
@@ -65,7 +62,7 @@ app-login-navbar {
         left: -18px;
     }
     .login-container {
-        margin-top: 165px;
+        margin-top: 155px;
         margin-bottom: 30px;
         padding-top: 30px;
         padding-bottom: 30px;
@@ -85,9 +82,6 @@ app-login-navbar {
     .nav-spacer {
         height: 64px;
     }
-    .header-background {
-        min-height: calc(100vh - 64px);
-    }
     .header-card-center {
         @include header-card-head();
         background: #DB00D5;
@@ -98,7 +92,11 @@ app-login-navbar {
     }
 }   
 
-@media screen and (min-width: 959px) {}
+@media screen and (min-width: 959px) {
+    .header-background {
+        min-height: calc(100vh - 64px);
+    }
+}
 @media screen and (min-width: 959px) and (max-width: 1100px) {}
 @media screen and (min-width: 1101px) and (max-width: 1281px) {}
 
