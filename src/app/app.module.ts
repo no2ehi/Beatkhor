@@ -12,24 +12,29 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Added Components
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { RegisterLoginComponent } from './register-login/register-login.component';
-import { HomePageComponent } from './home-page/home-page.component';
+import { IndexComponent } from './pages/index/index.component';
 import { LoginNavbarComponent } from './navbar/login-navbar/login-navbar.component';
 import { PrimaryNavbarComponent } from './navbar/primary-navbar/primary-navbar.component';
-// Added Services
-import { MainService } from './services/main.service';
 import { LoginFormComponent } from './register-login/login-form/login-form.component';
 import { RegisterFormComponent } from './register-login/register-form/register-form.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MainComponent } from './main/main.component';
+// Added Services
+import { MainService } from './services/main.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainHeaderComponent,
     RegisterLoginComponent,
-    HomePageComponent,
     LoginNavbarComponent,
     PrimaryNavbarComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    PageNotFoundComponent,
+    MainComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +47,7 @@ import { RegisterFormComponent } from './register-login/register-form/register-f
   ],
   providers: [
     MainService,
+    AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpINterceptor,

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/map';
 @Injectable()
@@ -35,47 +34,6 @@ export class MainService {
   }
   getToken(): string {
     return localStorage.getItem('token');
-  }
-
-  getRoutesRoles(): object {
-    return {
-      '': {
-        path: '',
-        token: false,
-        menu: false,
-        all: true,
-        roles: ['مدیر', 'مدیر ارشد', 'آهنگساز', 'خواننده', 'طراح']
-      },
-      'login': {
-        token: false,
-        menu: false,
-        all: true,
-        roles: ['مدیر', 'مدیر ارشد', 'آهنگساز', 'خواننده', 'طراح']
-      }
-    };
-  }
-
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const role = this.getRole();
-    const routesRoles = this.getRoutesRoles();
-
-    if (routesRoles[route.routeConfig.path].all) {
-      return true;
-    }
-
-    if (routesRoles[route.routeConfig.path].token === !!this.getToken()) {
-      if (role) {
-        if (routesRoles[route.routeConfig.path].roles.indexOf(role) > -1) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return true;
-      }
-    } else {
-      return false;
-    }
   }
 
   login(username: string, password: string) {
