@@ -21,7 +21,12 @@ export class MainService {
   }
 
   registerUser(nickName: string, email: string, password: string): Promise<object> {
-    return this.http.post<any>(environment.API_URL + '/app/user/register', {}).toPromise();;
+    const data = {
+      nickName,
+      email,
+      password
+    };
+    return this.http.post<any>(environment.API_URL + '/app/user/register', data).toPromise();;
   }
 
   removeLoginData() {

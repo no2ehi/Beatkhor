@@ -10,6 +10,7 @@ import { MainService } from './../../../services/main.service';
 export class RegisterFormComponent implements OnInit {
 
   @Output() public onModeChange = new EventEmitter();
+  loading = false;
   registerForm: FormGroup;
   hidePass;
 
@@ -43,7 +44,7 @@ export class RegisterFormComponent implements OnInit {
     if (value === input.root.value.password) {
       return null;
     } else {
-      return 'Not_Equal';
+      return 'Not equal values!';
     }
   }
 
@@ -52,6 +53,26 @@ export class RegisterFormComponent implements OnInit {
    */
   changeMode(): void {
     this.onModeChange.emit('login');
+  }
+
+  /**
+   * @description Registration process and sending data to server
+   */
+  async register() {
+    if (this.registerForm.invalid) {
+      this.registerForm.updateValueAndValidity();
+    } else {
+      this.loading = true;
+      const res = await this.mainService.registerUser(
+        this.registerForm.value.nickName,
+        this.registerForm.value.email,
+        this.registerForm.value.password
+      ).catch((error) => {
+        console.log(error.error);
+      });
+
+      this.loading = false;
+    }
   }
 
 }

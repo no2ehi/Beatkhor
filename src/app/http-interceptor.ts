@@ -19,7 +19,9 @@ export class HttpINterceptor implements HttpInterceptor {
         return next.handle(authReq)
             .catch((error, caught) => {
                 // intercept the respons error and displace it to the console
-                console.log('Error Occurred', error);
+
+                // console.log('Error Occurred', error);
+
                 // return the error to the method that called it
                 return Observable.throw(error);
             }) as any;

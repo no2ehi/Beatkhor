@@ -6,6 +6,7 @@
     color: white;
     border-radius: 3px;
     padding: 12px 20px;
+    z-index: 30;
 }
 
 app-login-navbar {
@@ -25,6 +26,7 @@ app-login-navbar {
 }
 
 .footer-container {
+    z-index: 0;
     position: absolute;
     bottom: 0;
     width: 100vw;
@@ -62,6 +64,8 @@ app-login-navbar {
         left: -15px;
     }
     .login-container {
+        position: relative;
+        z-index: 5;
         margin-top: 155px;
         margin-bottom: 30px;
         padding-top: 30px;

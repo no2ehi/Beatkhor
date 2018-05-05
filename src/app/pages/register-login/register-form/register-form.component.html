@@ -1,4 +1,4 @@
-<form fxLayout="column" fxLayoutAlign="center center" [formGroup]="registerForm">
+<form (submit)="register()" fxLayout="column" fxLayoutAlign="center center" [formGroup]="registerForm">
   <mat-form-field class="full-width-field" fxFlex="100">
     <input matInput formControlName="nickName" placeholder="نام یا نام مستعار">
 
@@ -17,6 +17,9 @@
     </mat-hint>
     <mat-error *ngIf="registerForm.controls['email'].invalid && !registerForm.value.email ">
       ایمیل را وارد کنید.
+    </mat-error>
+    <mat-error *ngIf="registerForm.controls['email'].invalid && registerForm.value.email ">
+      ایمیل معتبر نیست!
     </mat-error>
   </mat-form-field>
   <mat-form-field class="full-width-field">
@@ -46,6 +49,10 @@
   </mat-form-field>
   <div class="button-container" fxLayout="row" fxLayoutAlign="end center">
     <a mat-button color="primary" (click)="changeMode()">ورود</a>
-    <a mat-raised-button color="primary" [disabled]="registerForm.invalid">ثبت نام</a>
+    <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">ثبت نام</button>
   </div>
 </form>
+
+<div *ngIf="loading" class="loading-container" fxLayoutAlign="center center">
+  <mat-spinner [diameter]="45"></mat-spinner>
+</div>
