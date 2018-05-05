@@ -8,12 +8,20 @@ export class MainService {
 
   constructor(private http: HttpClient) { }
 
-  setLoginData(loginData: object) {
-    for (const key in loginData) {
-      if (loginData.hasOwnProperty(key)) {
-        localStorage.setItem(key, loginData[key]);
+  /**
+   * @description set authorization for user's local storage
+   * @param loginData 
+   */
+  setauthorization(data: object) {
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        localStorage.setItem(key, data[key]);
       }
     }
+  }
+
+  registerUser(nickName: string, email: string, password: string): Promise<object> {
+    return this.http.post<any>(environment.API_URL + '/app/user/register', {}).toPromise();;
   }
 
   removeLoginData() {
@@ -34,9 +42,5 @@ export class MainService {
   }
   getToken(): string {
     return localStorage.getItem('token');
-  }
-
-  login(username: string, password: string) {
-    return this.http.post<any>(environment.API_URL + '/app/user/login', { USER_NAME: username, PASSWORD: password });
   }
 }
