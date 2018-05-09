@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from "@angular/router";
 import { MainService } from './../../../services/main.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class RegisterFormComponent implements OnInit {
 
   constructor(
     private mainService: MainService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -63,15 +65,19 @@ export class RegisterFormComponent implements OnInit {
       this.registerForm.updateValueAndValidity();
     } else {
       this.loading = true;
-      const res = await this.mainService.registerUser(
+      this.mainService.registerUser(
         this.registerForm.value.nickName,
         this.registerForm.value.email,
         this.registerForm.value.password,
         'music_producer'
-      ).catch((error) => {
-        console.log(error.error);
-      });
-      console.log(res);
+      )
+        .then((result) => {
+          this.mainService.setauthorization(result);
+          this.router.navigate(['/p']);
+        })
+        .catch((error) => {
+          console.log(error.error);
+        });
 
       this.loading = false;
     }

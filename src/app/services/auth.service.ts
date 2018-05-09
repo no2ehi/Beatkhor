@@ -18,12 +18,18 @@ export class AuthService {
         token: false,
         menu: false,
         all: true,
-        roles: ['مدیر', 'مدیر ارشد', 'آهنگساز', 'خواننده', 'طراح']
+        roles: ['music_producer']
       },
       'login': {
         token: false,
         menu: false,
-        roles: ['مدیر', 'مدیر ارشد', 'آهنگساز', 'خواننده', 'طراح']
+        roles: ['music_producer']
+      },
+      'p': {
+        path: 'p',
+        token: true,
+        userMenu: false,
+        roles: ['music_producer']
       }
     };
   }
@@ -33,7 +39,7 @@ export class AuthService {
     const routesRoles = this.getRoutesRoles();
 
     if (route.routeConfig.path === 'login' && !!this.mainService.getToken()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/p']);
       return false;
     }
 

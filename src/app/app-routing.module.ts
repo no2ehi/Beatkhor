@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterLoginComponent } from './pages/register-login/register-login.component';
+import { PanelComponent } from './pages/panel/panel.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { AuthService } from './services/auth.service';
 import { IndexComponent } from './pages/index/index.component';
@@ -9,6 +10,11 @@ const routes: Routes = [
   {
     path: '',
     component: IndexComponent,
+    canActivate: [AuthService]
+  },
+  {
+    path: 'p',
+    component: PanelComponent,
     canActivate: [AuthService]
   },
   {

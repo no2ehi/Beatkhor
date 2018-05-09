@@ -21,6 +21,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 // Added Services
 import { MainService } from './services/main.service';
 import { AuthService } from './services/auth.service';
+import { PanelComponent } from './pages/panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthService } from './services/auth.service';
     LoginFormComponent,
     RegisterFormComponent,
     PageNotFoundComponent,
-    IndexComponent
+    IndexComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,
