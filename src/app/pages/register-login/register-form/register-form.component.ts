@@ -66,10 +66,12 @@ export class RegisterFormComponent implements OnInit {
       const res = await this.mainService.registerUser(
         this.registerForm.value.nickName,
         this.registerForm.value.email,
-        this.registerForm.value.password
+        this.registerForm.value.password,
+        'music_producer'
       ).catch((error) => {
         console.log(error.error);
       });
+      console.log(res);
 
       this.loading = false;
     }

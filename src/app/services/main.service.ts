@@ -20,12 +20,8 @@ export class MainService {
     }
   }
 
-  registerUser(nickName: string, email: string, password: string): Promise<object> {
-    const data = {
-      nickName,
-      email,
-      password
-    };
+  registerUser(nickName: string, email: string, password: string, role: string): Promise<object> {
+    const data = { nickName, email, password, role };
     return this.http.post<any>(environment.API_URL + '/app/user/register', data).toPromise();;
   }
 
@@ -36,11 +32,11 @@ export class MainService {
   getRole(): string {
     return localStorage.getItem('role');
   }
-  getName(): string {
-    return localStorage.getItem('name');
+  getNickName(): string {
+    return localStorage.getItem('nickName');
   }
-  getUsername(): string {
-    return localStorage.getItem('userName');
+  getEmail(): string {
+    return localStorage.getItem('email');
   }
   getUserRoleId(): string {
     return localStorage.getItem('userRoleId');
