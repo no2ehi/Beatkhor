@@ -1,8 +1,8 @@
-<form fxLayout="column" fxLayoutAlign="center center" [formGroup]="loginForm">
+<form (submit)="login()" fxLayout="column" fxLayoutAlign="center center" [formGroup]="loginForm">
   <mat-form-field class="full-width-field" fxFlex="100">
-    <input matInput formControlName="userName" placeholder="نام کاربری یا ایمیل">
+    <input matInput formControlName="email" placeholder="نام کاربری یا ایمیل">
 
-    <mat-error *ngIf="loginForm.controls['userName'].invalid && !loginForm.value.userName ">
+    <mat-error *ngIf="loginForm.controls['email'].invalid && !loginForm.value.email ">
       نام کاربری را وارد کنید.
     </mat-error>
   </mat-form-field>
@@ -18,7 +18,11 @@
     </mat-error>
   </mat-form-field>
   <div class="button-container" fxLayout="row" fxLayoutAlign="end center">
-    <a mat-button color="primary" (click)="changeMode()">ثبت نام</a>
-    <a mat-raised-button color="primary" [disabled]="loginForm.invalid">ورود</a>
+    <a mat-button color="primary" (click)="changeMode()">فرم ثبت نام</a>
+    <button mat-raised-button type="submit" color="primary" [disabled]="loginForm.invalid">ورود</button>
   </div>
 </form>
+
+<div *ngIf="loading" class="loading-container" fxLayoutAlign="center center">
+  <mat-spinner [diameter]="35"></mat-spinner>
+</div>

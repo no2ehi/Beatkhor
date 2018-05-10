@@ -18,10 +18,11 @@ import { PrimaryNavbarComponent } from './navbars/primary-navbar/primary-navbar.
 import { LoginFormComponent } from './pages/register-login/login-form/login-form.component';
 import { RegisterFormComponent } from './pages/register-login/register-form/register-form.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { PanelComponent } from './pages/panel/panel.component';
 // Added Services
 import { MainService } from './services/main.service';
+import { CommonService } from './services/common.service';
 import { AuthService } from './services/auth.service';
-import { PanelComponent } from './pages/panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { PanelComponent } from './pages/panel/panel.component';
   providers: [
     MainService,
     AuthService,
+    CommonService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpINterceptor,

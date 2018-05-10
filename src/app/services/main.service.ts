@@ -22,7 +22,12 @@ export class MainService {
 
   registerUser(nickName: string, email: string, password: string, role: string): Promise<object> {
     const data = { nickName, email, password, role };
-    return this.http.post<any>(environment.API_URL + '/app/user/register', data).toPromise();;
+    return this.http.post<object>(environment.API_URL + '/app/user/register', data).toPromise();
+  }
+
+  loginUser(email: string, password: string): Promise<object> {
+    const data = { email, password };
+    return this.http.post<object>(environment.API_URL + '/app/user/login', data).toPromise();
   }
 
   removeLoginData() {

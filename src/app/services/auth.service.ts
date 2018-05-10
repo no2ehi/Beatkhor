@@ -53,6 +53,7 @@ export class AuthService {
         if (routesRoles[route.routeConfig.path].roles.indexOf(role) > -1) {
           return true;
         } else {
+          console.log('ok');
           return false;
         }
       } else {

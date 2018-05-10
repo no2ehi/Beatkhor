@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from "@angular/router";
 import { MainService } from './../../../services/main.service';
+import { CommonService } from './../../../services/common.service';
 
 @Component({
   selector: 'app-register-form',
@@ -17,6 +18,7 @@ export class RegisterFormComponent implements OnInit {
 
   constructor(
     private mainService: MainService,
+    private commonService: CommonService,
     private fb: FormBuilder,
     private router: Router
   ) { }
@@ -64,22 +66,36 @@ export class RegisterFormComponent implements OnInit {
     if (this.registerForm.invalid) {
       this.registerForm.updateValueAndValidity();
     } else {
-      this.loading = true;
-      this.mainService.registerUser(
-        this.registerForm.value.nickName,
-        this.registerForm.value.email,
-        this.registerForm.value.password,
-        'music_producer'
-      )
-        .then((result) => {
-          this.mainService.setauthorization(result);
-          this.router.navigate(['/p']);
-        })
-        .catch((error) => {
-          console.log(error.error);
-        });
 
-      this.loading = false;
+      try {
+        this.loading = true;
+        const result = await this.mainService.registerUser(
+          this.registerForm.value.nickName,
+          this.registerForm.value.email,
+          this.registerForm.value.password,
+          'music_producer'
+        );
+        this.mainService.setauthorization(result);
+        this.router.navigate(['/p']);
+        this.loading = false;
+      } catch (error) {
+        console.log(error.error);
+        switch (error.error) {
+          case 'UserExists':
+            this.commonService.showSnackBar('در حال حاظر کاربری با این ایمیل وجود دارد!', 'فهمیدم');
+            break;
+          case 'BadRequest':
+            this.commonService.showSnackBar('درخواست ثبت نام دارای مشکل است!', 'فهمیدم');
+            break;
+          case 'ServerError':
+            this.commonService.showSnackBar('خطا در سرور! لطفا بعداً امتحان کنید.', 'فهمیدم');
+            break;
+        }
+        if (error.status === 0) {
+          this.commonService.showSnackBar('خطا در اتصال به سرور!', 'فهمیدم');
+        }
+        this.loading = false;
+      }
     }
   }
 

@@ -48,11 +48,11 @@
     </mat-error>
   </mat-form-field>
   <div class="button-container" fxLayout="row" fxLayoutAlign="end center">
-    <a mat-button color="primary" (click)="changeMode()">ورود</a>
+    <a mat-button color="primary" (click)="changeMode()">صفحه ورود</a>
     <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">ثبت نام</button>
   </div>
 </form>
 
 <div *ngIf="loading" class="loading-container" fxLayoutAlign="center center">
-  <mat-spinner [diameter]="45"></mat-spinner>
+  <mat-spinner [diameter]="35"></mat-spinner>
 </div>
