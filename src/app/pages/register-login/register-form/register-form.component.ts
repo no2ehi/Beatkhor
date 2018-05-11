@@ -67,19 +67,30 @@ export class RegisterFormComponent implements OnInit {
       this.registerForm.updateValueAndValidity();
     } else {
 
+      const data = {
+        nickName: this.registerForm.value.nickName,
+        email: this.registerForm.value.email,
+        password: this.registerForm.value.password,
+        role: 'music_producer'
+      };
       try {
         this.loading = true;
         const result = await this.mainService.registerUser(
-          this.registerForm.value.nickName,
-          this.registerForm.value.email,
-          this.registerForm.value.password,
-          'music_producer'
+          data.nickName,
+          data.email,
+          data.password,
+          data.role
         );
         this.mainService.setauthorization(result);
         this.router.navigate(['/p']);
         this.loading = false;
       } catch (error) {
-        console.log(error.error);
+        this.registerForm.reset({
+          nickName: data.nickName,
+          email: data.email,
+          password: '',
+          passwordConfirm: ''
+        })
         switch (error.error) {
           case 'UserExists':
             this.commonService.showSnackBar('در حال حاظر کاربری با این ایمیل وجود دارد!', 'فهمیدم');

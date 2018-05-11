@@ -1,0 +1,19 @@
+<mat-toolbar [class.mat-elevation-z1]="true" fxLayout="row" fxLayoutAlign="start center">
+
+  <img src="./../../../assets/images/logo-tiny.png" alt="Logo" width="30px" class="logo">
+
+  <span class="navbar-title">
+    داشبورد تنظیم‌کننده
+  </span>
+</mat-toolbar>
+
+<mat-nav-list>
+  <mat-list-item routerLink="/p/dashboard" routerLinkActive="active-page">
+    <mat-icon matListIcon>assessment</mat-icon>
+    <h3 matLine> میز کار من </h3>
+  </mat-list-item>
+  <mat-list-item routerLink="/p/posts" routerLinkActive="active-page">
+    <mat-icon matListIcon>audiotrack</mat-icon>
+    <h3 matLine> آثار من </h3>
+  </mat-list-item>
+</mat-nav-list>

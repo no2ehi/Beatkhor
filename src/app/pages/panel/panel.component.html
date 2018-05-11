@@ -1,3 +1,8 @@
-<p>
-  panel works!
-</p>
+<div class="container" fxLayout="row" fxLayoutAlign="end start">
+  <div fxFlex="30" class="navigation-container" [class.mat-elevation-z6]="true">
+    <app-panel-nav></app-panel-nav>
+  </div>
+  <div fxFlex="84" class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

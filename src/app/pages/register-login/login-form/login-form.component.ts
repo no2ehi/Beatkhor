@@ -53,17 +53,21 @@ export class LoginFormComponent implements OnInit {
     if (this.loginForm.invalid) {
       this.loginForm.updateValueAndValidity()
     } else {
-
       this.loading = true;
+      const
+        email = this.loginForm.value.email,
+        password = this.loginForm.value.password;
+
       try {
         const userData = await this.mainService.loginUser(
-          this.loginForm.value.email,
-          this.loginForm.value.password
+          email,
+          password
         );
         this.mainService.setauthorization(userData);
         this.router.navigate(['/p']);
         this.loading = false;
       } catch (error) {
+        this.loginForm.reset({ password: '', email: email });
         switch (error.error) {
           case 'UserNotExists_Email':
             this.commonService.showSnackBar('کاربری با این ایمیل وجود ندارد!', 'فهمیدم');

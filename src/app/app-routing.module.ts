@@ -5,6 +5,8 @@ import { PanelComponent } from './pages/panel/panel.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { AuthService } from './services/auth.service';
 import { IndexComponent } from './pages/index/index.component';
+import { PanelDashboardComponent } from './pages/panel/panel-dashboard/panel-dashboard.component';
+import { PanelPostsComponent } from './pages/panel/panel-posts/panel-posts.component';
 
 const routes: Routes = [
   {
@@ -15,7 +17,24 @@ const routes: Routes = [
   {
     path: 'p',
     component: PanelComponent,
-    canActivate: [AuthService]
+    canActivate: [AuthService],
+    children: [
+      {
+        path: '',
+        redirectTo: '/p/posts',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
+        component: PanelDashboardComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'posts',
+        component: PanelPostsComponent,
+        canActivate: [AuthService]
+      }
+    ]
   },
   {
     path: 'login',

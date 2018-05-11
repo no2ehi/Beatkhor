@@ -19,10 +19,13 @@ import { LoginFormComponent } from './pages/register-login/login-form/login-form
 import { RegisterFormComponent } from './pages/register-login/register-form/register-form.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { PanelComponent } from './pages/panel/panel.component';
+import { PanelNavComponent } from './navbars/panel-nav/panel-nav.component';
+import { PanelDashboardComponent } from './pages/panel/panel-dashboard/panel-dashboard.component';
 // Added Services
 import { MainService } from './services/main.service';
 import { CommonService } from './services/common.service';
 import { AuthService } from './services/auth.service';
+import { PanelPostsComponent } from './pages/panel/panel-posts/panel-posts.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { AuthService } from './services/auth.service';
     RegisterFormComponent,
     PageNotFoundComponent,
     IndexComponent,
-    PanelComponent
+    PanelComponent,
+    PanelNavComponent,
+    PanelDashboardComponent,
+    PanelPostsComponent
   ],
   imports: [
     BrowserModule,

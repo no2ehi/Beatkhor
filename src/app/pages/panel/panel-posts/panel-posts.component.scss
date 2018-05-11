@@ -1,0 +1,29 @@
+mat-toolbar.content-toolbar {
+    font-size: 14px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    .navbar-title {
+        color: black;
+        font-size: 1em;
+    }
+}
+
+.content {
+    margin-top: 64px;
+    padding: 24px;
+}
+
+@media screen and (max-width: 599px) {
+    .content {
+        margin-top: 54px;
+    }
+}
+
+mat-progress-bar {
+    z-index: 10;
+    position: fixed;
+}
