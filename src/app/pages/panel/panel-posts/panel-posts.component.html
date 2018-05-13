@@ -1,7 +1,6 @@
 <mat-toolbar [class.mat-elevation-z1]="true" class="content-toolbar">
-  <span class="navbar-title">
-    آثار من
-  </span>
+  <span *ngIf="role!=='administrator' && role !=='admin'" class="navbar-title">آثار من</span>
+  <span *ngIf="role==='administrator' || role ==='admin'" class="navbar-title">مدیریت پست‌ها</span>
 </mat-toolbar>
 <!-- <mat-progress-bar mode="query" color="primary"></mat-progress-bar> -->
 <div class="content">

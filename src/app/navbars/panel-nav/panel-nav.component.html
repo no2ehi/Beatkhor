@@ -2,18 +2,17 @@
 
   <img src="./../../../assets/images/logo-tiny.png" alt="Logo" width="30px" class="logo">
 
-  <span class="navbar-title">
-    داشبورد تنظیم‌کننده
-  </span>
+  <span *ngIf="role ==='music_producer'" class="navbar-title">داشبورد تنظیم‌کننده</span>
+  <span *ngIf="role ==='administrator' || role === 'admin'" class="navbar-title">مدیریت بیت خور</span>
 </mat-toolbar>
 
 <mat-nav-list>
-  <mat-list-item routerLink="/p/dashboard" routerLinkActive="active-page">
-    <mat-icon matListIcon>assessment</mat-icon>
-    <h3 matLine> میز کار من </h3>
+  <mat-list-item *ngFor="let item of orderedList" routerLink="{{item.routerLink}}" routerLinkActive="active-page">
+    <mat-icon matListIcon>{{item.icon}}</mat-icon>
+    <h3 matLine>{{item.content}}</h3>
   </mat-list-item>
-  <mat-list-item routerLink="/p/posts" routerLinkActive="active-page">
-    <mat-icon matListIcon>audiotrack</mat-icon>
-    <h3 matLine> آثار من </h3>
+  <mat-list-item (click)="logout()">
+    <mat-icon matListIcon>power_settings_new</mat-icon>
+    <h3 matLine>خروج</h3>
   </mat-list-item>
 </mat-nav-list>

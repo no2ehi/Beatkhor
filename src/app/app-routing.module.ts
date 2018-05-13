@@ -21,7 +21,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/p/posts',
+        redirectTo: '/p/dashboard',
         pathMatch: 'full'
       },
       {

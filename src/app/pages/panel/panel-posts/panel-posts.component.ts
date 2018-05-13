@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from "./../../../services/main.service";
 
 @Component({
   selector: 'app-panel-posts',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanelPostsComponent implements OnInit {
 
-  constructor() { }
+  role = '';
+  constructor(
+    private mainService: MainService
+  ) { }
 
   ngOnInit() {
+    this.role = this.mainService.getRole();
   }
 
 }

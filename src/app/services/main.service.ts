@@ -35,7 +35,7 @@ export class MainService {
   }
 
   getRole(): string {
-    return localStorage.getItem('role');
+    return localStorage.getItem('userRole');
   }
   getNickName(): string {
     return localStorage.getItem('nickName');

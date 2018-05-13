@@ -23,26 +23,35 @@ export class AuthService {
       },
       'login': {
         token: false,
-        menu: false,
         roles: ['music_producer']
       },
       'p': {
         path: 'p',
         token: true,
-        userPanel: false,
-        roles: ['music_producer']
+        userMenu: false,
+        roles: ['music_producer', 'administrator']
       },
       'dashboard': {
         path: 'dashboard',
+        routerLink: '/p/dashboard',
         token: true,
-        userPanel: false,
-        roles: ['music_producer']
+        userMenu: true,
+        adminMenu: true,
+        userTitle: 'میز کار من',
+        adminTitle: 'میز کار من',
+        icon: 'assessment',
+        roles: ['music_producer', 'administrator']
       },
       'posts': {
         path: 'posts',
+        routerLink: '/p/posts',
         token: true,
-        userPanel: false,
-        roles: ['music_producer']
+        userMenu: true,
+        adminMenu: true,
+        userTitle: 'آثار من',
+        adminTitle: 'مدیریت پست ها',
+        icon: 'audiotrack',
+        roles: ['music_producer', 'administrator']
       }
     };
   }
