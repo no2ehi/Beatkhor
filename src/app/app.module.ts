@@ -21,13 +21,13 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { PanelComponent } from './pages/panel/panel.component';
 import { PanelNavComponent } from './navbars/panel-nav/panel-nav.component';
 import { PanelDashboardComponent } from './pages/panel/panel-dashboard/panel-dashboard.component';
+import { PanelPostsComponent } from './pages/panel/panel-posts/panel-posts.component';
+import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
+import { PanelCategoryComponent } from './pages/panel/panel-category/panel-category.component';
 // Added Services
 import { MainService } from './services/main.service';
 import { CommonService } from './services/common.service';
 import { AuthService } from './services/auth.service';
-import { PanelPostsComponent } from './pages/panel/panel-posts/panel-posts.component';
-import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
-import { PanelCategoryComponent } from './pages/panel/panel-category/panel-category.component';
 
 @NgModule({
   declarations: [

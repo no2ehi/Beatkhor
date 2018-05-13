@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/toPromise';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import 'rxjs/add/operator/map';
 @Injectable()
 export class MainService {
 
