@@ -15,6 +15,7 @@ export class RegisterFormComponent implements OnInit {
   loading = false;
   registerForm: FormGroup;
   hidePass;
+  hidePassConf;
 
   constructor(
     private mainService: MainService,

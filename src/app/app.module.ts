@@ -26,6 +26,7 @@ import { MainService } from './services/main.service';
 import { CommonService } from './services/common.service';
 import { AuthService } from './services/auth.service';
 import { PanelPostsComponent } from './pages/panel/panel-posts/panel-posts.component';
+import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PanelPostsComponent } from './pages/panel/panel-posts/panel-posts.compo
     PanelComponent,
     PanelNavComponent,
     PanelDashboardComponent,
-    PanelPostsComponent
+    PanelPostsComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +64,9 @@ import { PanelPostsComponent } from './pages/panel/panel-posts/panel-posts.compo
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ConfirmDialogComponent
+  ]
 })
 export class AppModule { }

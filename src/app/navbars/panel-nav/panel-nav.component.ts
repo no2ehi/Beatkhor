@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { MainService } from './../../services/main.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ConfirmDialogComponent } from './../../dialogs/confirm-dialog/confirm-dialog.component';
+
 @Component({
   selector: 'app-panel-nav',
   templateUrl: './panel-nav.component.html',
@@ -15,7 +18,8 @@ export class PanelNavComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private mainService: MainService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -57,8 +61,16 @@ export class PanelNavComponent implements OnInit {
   }
 
   logout() {
-    this.mainService.removeLoginData();
-    this.router.navigate(['/']);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '300px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.mainService.removeLoginData();
+        this.router.navigate(['/']);
+      }
+    });
   }
 
 }

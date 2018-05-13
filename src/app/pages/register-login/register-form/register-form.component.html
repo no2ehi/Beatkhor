@@ -38,7 +38,7 @@
   </mat-form-field>
   <mat-form-field class="full-width-field">
     <input [type]="hidePass ? 'text' : 'password' " matInput formControlName="passwordConfirm" placeholder="تکرار رمز عبور">
-    <mat-icon matSuffix (click)="hidePass=!hidePass">{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
+    <mat-icon matSuffix (click)="hidePass=!hidePass">{{hidePassConf ? 'visibility' : 'visibility_off'}}</mat-icon>
 
     <mat-error *ngIf="registerForm.controls['passwordConfirm'].invalid && registerForm.value.passwordConfirm ">
       رمز عبور همخوانی ندارد.
