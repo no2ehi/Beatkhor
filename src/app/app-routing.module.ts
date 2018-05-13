@@ -7,6 +7,7 @@ import { AuthService } from './services/auth.service';
 import { IndexComponent } from './pages/index/index.component';
 import { PanelDashboardComponent } from './pages/panel/panel-dashboard/panel-dashboard.component';
 import { PanelPostsComponent } from './pages/panel/panel-posts/panel-posts.component';
+import { PanelCategoryComponent } from './pages/panel/panel-category/panel-category.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: PanelDashboardComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'manage_categories',
+        component: PanelCategoryComponent,
         canActivate: [AuthService]
       },
       {

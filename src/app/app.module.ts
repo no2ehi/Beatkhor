@@ -27,6 +27,7 @@ import { CommonService } from './services/common.service';
 import { AuthService } from './services/auth.service';
 import { PanelPostsComponent } from './pages/panel/panel-posts/panel-posts.component';
 import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
+import { PanelCategoryComponent } from './pages/panel/panel-category/panel-category.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.
     PanelNavComponent,
     PanelDashboardComponent,
     PanelPostsComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    PanelCategoryComponent
   ],
   imports: [
     BrowserModule,

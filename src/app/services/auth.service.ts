@@ -49,9 +49,19 @@ export class AuthService {
         userMenu: true,
         adminMenu: true,
         userTitle: 'آثار من',
-        adminTitle: 'مدیریت پست ها',
+        adminTitle: 'مدیریت پست‌ها',
         icon: 'audiotrack',
         roles: ['music_producer', 'administrator']
+      },
+      'manage_categories': {
+        path: 'manage_categories',
+        routerLink: '/p/manage_categories',
+        token: true,
+        userMenu: false,
+        adminMenu: true,
+        adminTitle: 'دسته بندی‌‌ها',
+        icon: 'category',
+        roles: ['administrator']
       }
     };
   }

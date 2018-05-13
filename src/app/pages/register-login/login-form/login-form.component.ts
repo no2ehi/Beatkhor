@@ -65,6 +65,7 @@ export class LoginFormComponent implements OnInit {
         );
         this.mainService.setauthorization(userData);
         this.router.navigate(['/p']);
+        this.commonService.showSnackBar('سلام ' + this.mainService.getNickName() + '، خوش آمدید!', 'ممنون');
         this.loading = false;
       } catch (error) {
         this.loginForm.reset({ password: '', email: email });
