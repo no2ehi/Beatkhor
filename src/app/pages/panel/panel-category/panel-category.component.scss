@@ -9,6 +9,7 @@ mat-toolbar.content-toolbar {
     .navbar-title {
         color: black;
         font-size: 1em;
+        margin-right: 11px;
     }
 }
 
@@ -26,4 +27,8 @@ mat-toolbar.content-toolbar {
 mat-progress-bar {
     z-index: 10;
     position: fixed;
+}
+
+.divider {
+    padding-top: 14px;
 }
