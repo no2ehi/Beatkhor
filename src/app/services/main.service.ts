@@ -29,6 +29,91 @@ export class MainService {
     return this.http.post<object>(environment.API_URL + '/app/user/login', data).toPromise();
   }
 
+  getCategories(): Promise<object[]> {
+    return this.http.get<object[]>(environment.API_URL + '/app/category').toPromise();
+  }
+
+  /**
+   * @description orders given data in the best way to use
+   * @param categories
+   * @returns orderedData
+   */
+  orderCategoryData(categories) {
+    const orderedData = [];
+
+    for (const category of categories) {
+      if (orderedData.length) {
+        if (category.CATEGORY_GROUP_ID !== orderedData[orderedData.length - 1].id) {
+          orderedData.push(newItem(category));
+        } else {
+          orderedData[orderedData.length - 1].categories.push({
+            id: category.CATEGORY_ID,
+            slug: category.CATEGORY_SLUG,
+            title: category.CATEGORY_TITLE,
+            createDate: category.CATEGORY_CREATE_DATE
+          });
+        }
+      } else {
+        orderedData.push(newItem(category));
+      }
+    }
+
+    function newItem(input) {
+      return {
+        id: input.CATEGORY_GROUP_ID,
+        slug: input.CATEGORY_GROUP_SLUG,
+        title: input.CATEGORY_GROUP_TITLE,
+        createDate: input.CATEGORY_GROUP_CREATE_DATE,
+        categories: [{
+          id: input.CATEGORY_ID,
+          slug: input.CATEGORY_SLUG,
+          title: input.CATEGORY_TITLE,
+          createDate: input.CATEGORY_CREATE_DATE
+        }]
+      };
+    }
+
+    return orderedData;
+  }
+
+  // ordersDataReady(orders) {
+  //   const orderedData = [];
+
+  //   for (const order of orders) {
+  //     if (orderedData.length) {
+  //       if (order.ORDER_ID !== orderedData[orderedData.length - 1].ORDER_ID) {
+  //         orderedData.push(newItem(order));
+  //       } else {
+  //         orderedData[orderedData.length - 1].SERVICES.push({
+  //           SERVICE_ID: order.SERVICE_ID,
+  //           SERVICE_NAME: order.SERVICE_NAME,
+  //           DEFAULT_COST: order.DEFAULT_COST
+  //         });
+  //       }
+  //     } else {
+  //       orderedData.push(newItem(order));
+  //     }
+  //   }
+
+  //   function newItem(input) {
+  //     return {
+  //       ADDRESS_NAME: input.ADDRESS_NAME,
+  //       CREATE_DATE: input.CREATE_DATE,
+  //       CUSTOMER_ID: input.CUSTOMER_ID,
+  //       ORDER_ID: input.ORDER_ID,
+  //       ORDER_STATUS_NAME: input.ORDER_STATUS_NAME,
+  //       SERVICE_GROUP_NAME: input.SERVICE_GROUP_NAME,
+  //       VENDOR_ID: input.VENDOR_ID,
+  //       SERVICES: [{
+  //         SERVICE_ID: input.SERVICE_ID,
+  //         SERVICE_NAME: input.SERVICE_NAME
+  //       }]
+  //     };
+  //   }
+
+  //   return orderedData;
+  // }
+
   removeLoginData() {
     localStorage.clear();
   }
