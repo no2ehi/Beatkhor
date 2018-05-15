@@ -9,7 +9,8 @@ import { MainService } from './../../../services/main.service';
 })
 export class PanelCategoryComponent implements OnInit {
 
-  categories: object[] = [];
+  categories = [];
+  displayedColumns = ['id', 'title', 'slug', 'date'];
 
   constructor(
     private titleService: Title,

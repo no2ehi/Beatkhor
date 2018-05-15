@@ -57,7 +57,6 @@ export class PanelNavComponent implements OnInit {
         });
       }
     }
-    console.log(this.orderedList);
   }
 
   logout() {

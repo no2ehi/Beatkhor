@@ -38,8 +38,14 @@ body {
 	font-size: 14px;
 }
 
-span, p, h1, h2, h3, h4, h5, h6, mat-toolbar, mat-card-title {
+span, p, h1, h2, h3, h4, h5, h6, mat-toolbar, mat-card-title,
+mat-list-item, .mat-header-cell, .mat-cell {
     font-family: iranyekan ,roboto, sans-serif,Arial !important;
+}
+
+.mat-header-cell {
+	direction: rtl;
+	text-align: right !important;
 }
 
 .text-ultralight {

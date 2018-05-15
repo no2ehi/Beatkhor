@@ -28,6 +28,8 @@ import { PanelCategoryComponent } from './pages/panel/panel-category/panel-categ
 import { MainService } from './services/main.service';
 import { CommonService } from './services/common.service';
 import { AuthService } from './services/auth.service';
+import { PersianNumberPipe } from './pipes/persian-number.pipe';
+import { JalaaliDatePipe } from './pipes/jalaali-date.pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { AuthService } from './services/auth.service';
     PanelDashboardComponent,
     PanelPostsComponent,
     ConfirmDialogComponent,
-    PanelCategoryComponent
+    PanelCategoryComponent,
+    PersianNumberPipe,
+    JalaaliDatePipe
   ],
   imports: [
     BrowserModule,
