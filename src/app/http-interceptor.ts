@@ -22,7 +22,7 @@ export class HttpINterceptor implements HttpInterceptor {
                 // console.log('Error Occurred', error);
 
                 // return the error to the method that called it
-                return Observable.throw(error);
+                return throwError(error);
             }));
     }
 }
