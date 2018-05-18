@@ -1,0 +1,23 @@
+mat-form-field {
+    width: 100%;
+    font-size: 1.05em;
+}
+
+.full-width {
+    width: 100%;
+}
+
+mat-checkbox {
+    margin-top: 6px;
+    margin-bottom: 12px;
+}
+
+.position-container {
+    mat-button-toggle {
+        height: 35px;
+    }
+
+    .mat-button-toggle-checked {
+        color: #aa00ff;
+    }
+}

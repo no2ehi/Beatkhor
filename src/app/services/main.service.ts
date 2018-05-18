@@ -19,16 +19,31 @@ export class MainService {
     }
   }
 
+  /**
+   * @description A http request to register user
+   * @param nickName 
+   * @param email 
+   * @param password 
+   * @param role 
+   */
   registerUser(nickName: string, email: string, password: string, role: string): Promise<object> {
     const data = { nickName, email, password, role };
     return this.http.post<object>(environment.API_URL + '/app/user/register', data).toPromise();
   }
 
+  /**
+   * @description A http request to get login data from server
+   * @param email 
+   * @param password 
+   */
   loginUser(email: string, password: string): Promise<object> {
     const data = { email, password };
     return this.http.post<object>(environment.API_URL + '/app/user/login', data).toPromise();
   }
 
+  /**
+   * @description A http request to get all categories
+   */
   getCategories(): Promise<object[]> {
     return this.http.get<object[]>(environment.API_URL + '/app/category').toPromise();
   }
@@ -49,6 +64,7 @@ export class MainService {
           orderedData[orderedData.length - 1].categories.push({
             id: category.CATEGORY_ID,
             slug: category.CATEGORY_SLUG,
+            position: category.CATEGORY_POSITION,
             title: category.CATEGORY_TITLE,
             createDate: category.CATEGORY_CREATE_DATE
           });
@@ -62,11 +78,15 @@ export class MainService {
       return {
         id: input.CATEGORY_GROUP_ID,
         slug: input.CATEGORY_GROUP_SLUG,
+        uiColor: input.UI_COLOR,
+        backUiColor: input.BACK_UI_COLOR,
+        position: input.CATEGORY_GROUP_POSITION,
         title: input.CATEGORY_GROUP_TITLE,
         createDate: input.CATEGORY_GROUP_CREATE_DATE,
         categories: [{
           id: input.CATEGORY_ID,
           slug: input.CATEGORY_SLUG,
+          position: input.CATEGORY_POSITION,
           title: input.CATEGORY_TITLE,
           createDate: input.CATEGORY_CREATE_DATE
         }]
@@ -76,44 +96,9 @@ export class MainService {
     return orderedData;
   }
 
-  // ordersDataReady(orders) {
-  //   const orderedData = [];
-
-  //   for (const order of orders) {
-  //     if (orderedData.length) {
-  //       if (order.ORDER_ID !== orderedData[orderedData.length - 1].ORDER_ID) {
-  //         orderedData.push(newItem(order));
-  //       } else {
-  //         orderedData[orderedData.length - 1].SERVICES.push({
-  //           SERVICE_ID: order.SERVICE_ID,
-  //           SERVICE_NAME: order.SERVICE_NAME,
-  //           DEFAULT_COST: order.DEFAULT_COST
-  //         });
-  //       }
-  //     } else {
-  //       orderedData.push(newItem(order));
-  //     }
-  //   }
-
-  //   function newItem(input) {
-  //     return {
-  //       ADDRESS_NAME: input.ADDRESS_NAME,
-  //       CREATE_DATE: input.CREATE_DATE,
-  //       CUSTOMER_ID: input.CUSTOMER_ID,
-  //       ORDER_ID: input.ORDER_ID,
-  //       ORDER_STATUS_NAME: input.ORDER_STATUS_NAME,
-  //       SERVICE_GROUP_NAME: input.SERVICE_GROUP_NAME,
-  //       VENDOR_ID: input.VENDOR_ID,
-  //       SERVICES: [{
-  //         SERVICE_ID: input.SERVICE_ID,
-  //         SERVICE_NAME: input.SERVICE_NAME
-  //       }]
-  //     };
-  //   }
-
-  //   return orderedData;
-  // }
-
+  /**
+   * @description Clears the localstorage
+   */
   removeLoginData() {
     localStorage.clear();
   }

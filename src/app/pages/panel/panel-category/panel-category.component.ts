@@ -10,7 +10,7 @@ import { MainService } from './../../../services/main.service';
 export class PanelCategoryComponent implements OnInit {
 
   categories = [];
-  displayedColumns = ['id', 'title', 'slug', 'date'];
+  loading = true;
 
   constructor(
     private titleService: Title,
@@ -26,8 +26,10 @@ export class PanelCategoryComponent implements OnInit {
    * @description Gets all categories data to display on list
    */
   async getData() {
+    this.loading = true;
     this.categories = await this.mainService.getCategories();
     this.categories = this.mainService.orderCategoryData(this.categories);
+    this.loading = false;
     console.log(this.categories);
   }
 

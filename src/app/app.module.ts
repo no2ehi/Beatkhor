@@ -30,6 +30,8 @@ import { CommonService } from './services/common.service';
 import { AuthService } from './services/auth.service';
 import { PersianNumberPipe } from './pipes/persian-number.pipe';
 import { JalaaliDatePipe } from './pipes/jalaali-date.pipe';
+import { AddCategoryComponent } from './pages/panel/panel-category/add-category/add-category.component';
+import { DisplayCategoriesComponent } from './pages/panel/panel-category/display-categories/display-categories.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { JalaaliDatePipe } from './pipes/jalaali-date.pipe';
     ConfirmDialogComponent,
     PanelCategoryComponent,
     PersianNumberPipe,
-    JalaaliDatePipe
+    JalaaliDatePipe,
+    AddCategoryComponent,
+    DisplayCategoriesComponent
   ],
   imports: [
     BrowserModule,

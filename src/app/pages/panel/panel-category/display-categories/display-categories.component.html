@@ -1,0 +1,38 @@
+<mat-card>
+
+  <mat-card-header fxLayoutAlign="space-between start">
+    <mat-card-title>لیست دسته‌بندی‌ها</mat-card-title>
+    <mat-spinner *ngIf="loading" [diameter]="25"></mat-spinner>
+  </mat-card-header>
+
+  <mat-list *ngIf="!loading" role="list">
+    <ng-container *ngFor="let categoryGroup of categories">
+
+      <mat-list-item role="listitem" class="serviceGroupList" [style.border-right]="'3px solid ' + categoryGroup.uiColor" [style.background-color]="categoryGroup.backUiColor">
+        <div fxFlex="100" fxLayoutAlign="space-between center">
+          <span>{{ categoryGroup.title }}</span>
+          <button mat-icon-button>
+            <mat-icon class="btn-icon" color="warn">delete</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+
+      <mat-list>
+        <mat-list-item class="subCategory" *ngFor="let category of categoryGroup.categories let i = index" fxFlex="100">
+          <span fxFlex="10">{{category.id | persianNumber}}</span>
+          <span fxFlex="25">{{category.title}}</span>
+          <span fxFlex="25" fxLayoutAlign="center center">{{category.slug}}</span>
+          <span fxFlex="25" fxLayoutAlign="center center">{{category.createDate | jalaaliDate}}</span>
+          <span fxFlex="15" fxLayoutAlign="end center">
+            <button mat-icon-button>
+              <mat-icon class="btn-icon">more_vert</mat-icon>
+            </button>
+          </span>
+          <mat-divider *ngIf="i!==(categoryGroup.categories.length - 1)"></mat-divider>
+        </mat-list-item>
+      </mat-list>
+
+    </ng-container>
+  </mat-list>
+
+</mat-card>

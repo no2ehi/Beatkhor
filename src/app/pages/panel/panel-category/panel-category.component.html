@@ -3,50 +3,12 @@
     دسته بندی ها
   </span>
 </mat-toolbar>
-<!-- <mat-progress-bar mode="query" color="primary"></mat-progress-bar> -->
+
 <div class="content" fxLayout="row" fxLayoutAlign="space-between start">
   <div fxFlex="68">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>لیست دسته‌بندی‌ها</mat-card-title>
-      </mat-card-header>
-
-      <mat-list role="list">
-        <ng-container *ngFor="let categoryGroup of categories">
-          <mat-list-item role="listitem" class="serviceGroupList">
-            <div fxFlex="100" fxLayoutAlign="space-between center">
-              <span>{{ categoryGroup.title }}</span>
-              <button mat-icon-button>
-                <mat-icon class="btn-icon" color="warn">delete</mat-icon>
-              </button>
-            </div>
-          </mat-list-item>
-
-
-          <mat-list>
-            <mat-list-item class="subCategory" *ngFor="let category of categoryGroup.categories let i = index" fxFlex="100">
-              <span fxFlex="10">{{category.id | persianNumber}}</span>
-              <span fxFlex="25">{{category.title}}</span>
-              <span fxFlex="25" fxLayoutAlign="end center">{{category.slug}}</span>
-              <span fxFlex="25" fxLayoutAlign="center center">{{category.createDate | jalaaliDate}}</span>
-              <span fxFlex="15" fxLayoutAlign="end center">
-                <button mat-icon-button>
-                  <mat-icon class="btn-icon">more_vert</mat-icon>
-                </button>
-              </span>
-              <mat-divider *ngIf="i!==(categoryGroup.categories.length - 1)"></mat-divider>
-            </mat-list-item>
-          </mat-list>
-        </ng-container>
-      </mat-list>
-    </mat-card>
+    <app-display-categories [categories]="categories" [loading]="loading"></app-display-categories>
   </div>
-
   <div fxFlex="30">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>افزودن دسته‌بندی</mat-card-title>
-      </mat-card-header>
-    </mat-card>
+    <app-add-category [categories]="categories" [loading]="loading"></app-add-category>
   </div>
 </div>

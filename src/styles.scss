@@ -39,13 +39,22 @@ body {
 }
 
 span, p, h1, h2, h3, h4, h5, h6, mat-toolbar, mat-card-title,
-mat-list-item, .mat-header-cell, .mat-cell {
+mat-list-item, .mat-header-cell, .mat-cell, mat-error, mat-hint,
+.mat-input-element, mat-button-toggle {
     font-family: iranyekan ,roboto, sans-serif,Arial !important;
+}
+
+.mat-input-element {
+	height: 18px;
 }
 
 .mat-header-cell {
 	direction: rtl;
 	text-align: right !important;
+}
+
+mat-select {
+	line-height: 19px;
 }
 
 .text-ultralight {

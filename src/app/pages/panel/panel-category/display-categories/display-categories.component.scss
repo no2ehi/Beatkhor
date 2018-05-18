@@ -1,0 +1,23 @@
+.serviceGroupList {
+    border-right: 3px solid #9c27b0;
+    font-size: 1em;
+    background-color: #f3e5f5;
+    border-top-left-radius: 2.5px;
+    border-bottom-left-radius: 2.5px;
+}
+
+mat-list {
+    padding: 0;
+}
+
+.subCategory {
+    span {
+        font-size: .9em;
+    }
+    border-right: 3px solid white;
+}
+
+.btn-icon {
+    position: relative;
+    top: -2px;
+}
