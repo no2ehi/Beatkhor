@@ -4,7 +4,7 @@
     <mat-spinner *ngIf="loading" [diameter]="25"></mat-spinner>
   </mat-card-header>
 
-  <form fxLayout="column" fxLayoutAlign="stretch end" [formGroup]="addForm">
+  <form (submit)="addCategory()" fxLayout="column" fxLayoutAlign="stretch end" [formGroup]="addForm">
     <mat-form-field>
       <input matInput type="text" formControlName="title" placeholder="عنوان دسته" />
       <mat-error *ngIf="!addForm.value.title">
@@ -27,29 +27,23 @@
         مقدار وارد شده معتبر نیست!
       </mat-error>
     </mat-form-field>
-    <mat-checkbox class="full-width" formControlName="isParent" color="accent">دسته‌ی مادر است.</mat-checkbox>
-    <mat-form-field *ngIf="addForm.value.isParent">
-      <mat-select formControlName="parent" placeholder="انتخاب دسته‌ی مادر">
-        <mat-option [value]="'s'">شمماره یک</mat-option>
-        <mat-option [value]="'s'">شمماره دو</mat-option>
-        <mat-option [value]="'s'">شمماره سه</mat-option>
+    <mat-checkbox class="full-width" (change)="inParentChange()" formControlName="isParent" color="accent">دسته‌ی مادر است.</mat-checkbox>
+    <mat-form-field *ngIf="!addForm.value.isParent">
+      <mat-select disableRipple (selectionChange)="updatePositionSelection()" formControlName="parentId" placeholder="انتخاب دسته‌ی مادر">
+        <mat-option *ngFor="let category of categories" [value]="category.id">{{category.title}}</mat-option>
       </mat-select>
     </mat-form-field>
     <span class="full-width position-container" fxLayoutAlign="start center">
       <span fxFlex="50">
-        <mat-button-toggle-group color="primary" formControlName="position" name="position" aria-label="position">
-          <mat-button-toggle value="after">قبل از</mat-button-toggle>
-          <mat-button-toggle value="befor">بعد از</mat-button-toggle>
+        <mat-button-toggle-group color="primary" formControlName="positionMode" name="position" aria-label="position">
+          <mat-button-toggle value="before">قبل از</mat-button-toggle>
+          <mat-button-toggle value="after">بعد از</mat-button-toggle>
         </mat-button-toggle-group>
       </span>
       <span fxFlex="50">
         <mat-form-field>
-          <mat-select formControlName="index" placeholder="انتخاب دسته">
-            <mat-option [value]="'s'">شمماره یک</mat-option>
-            <mat-option [value]="'s'">شمماره دو</mat-option>
-            <mat-option [value]="'s'">شمماره سه</mat-option>
-            <mat-option [value]="'s'">شمماره چهار</mat-option>
-            <mat-option [value]="'s'">شمماره پنج</mat-option>
+          <mat-select disableRipple formControlName="index" placeholder="انتخاب دسته">
+            <mat-option *ngFor="let subCategory of seletedSubCategories" [value]="subCategory.position">{{subCategory.title}}</mat-option>
           </mat-select>
         </mat-form-field>
       </span>

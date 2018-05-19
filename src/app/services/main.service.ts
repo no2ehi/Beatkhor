@@ -49,6 +49,24 @@ export class MainService {
   }
 
   /**
+   * @description A http request to get all categories
+   * @param title 
+   * @param slug 
+   * @param isParent 
+   * @param parentId 
+   * @param positionMode 
+   * @param index 
+   */
+  addCategory(
+    title: string, slug: string,
+    isParent: boolean, parentId: string,
+    positionMode: string, index: number
+  ): Promise<string> {
+    const data = { title, slug, isParent, parentId, positionMode, index };
+    return this.http.put<string>(environment.API_URL + '/app/category', data).toPromise();
+  }
+
+  /**
    * @description orders given data in the best way to use
    * @param categories
    * @returns orderedData
