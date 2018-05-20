@@ -6,7 +6,7 @@
   </mat-card-header>
 
   <mat-list *ngIf="!loading" role="list">
-    <ng-container *ngFor="let categoryGroup of categories">
+    <ng-container *ngFor="let categoryGroup of categories | orderByIndex">
 
       <mat-list-item role="listitem" class="serviceGroupList" [style.border-right]="'3px solid ' + categoryGroup.uiColor" [style.background-color]="categoryGroup.backUiColor">
         <div fxFlex="100" fxLayoutAlign="space-between center">
@@ -18,7 +18,7 @@
       </mat-list-item>
 
       <mat-list>
-        <mat-list-item class="subCategory" *ngFor="let category of categoryGroup.categories let i = index" fxFlex="100">
+        <mat-list-item class="subCategory" *ngFor="let category of categoryGroup.categories | orderByIndex; let i = index" fxFlex="100">
           <span fxFlex="10">{{category.id | persianNumber}}</span>
           <span fxFlex="25">{{category.title}}</span>
           <span fxFlex="25" fxLayoutAlign="center center">{{category.slug}}</span>
