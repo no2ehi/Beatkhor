@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-display-categories',
@@ -9,9 +9,14 @@ export class DisplayCategoriesComponent implements OnInit {
 
   @Input() public categories;
   @Input() public loading;
+  @Output() public refresh = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
+  }
+
+  refreshData() {
+    this.refresh.emit();
   }
 
 }

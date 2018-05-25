@@ -63,7 +63,10 @@ export class MainService {
     positionMode: string, index: number
   ): Promise<string> {
     const data = { title, slug, isParent, parentId, positionMode, index };
-    return this.http.put<string>(environment.API_URL + '/app/category', data).toPromise();
+    return this.http.put(
+      environment.API_URL + '/app/category', data,
+      { responseType: 'text' }
+    ).toPromise();
   }
 
   /**

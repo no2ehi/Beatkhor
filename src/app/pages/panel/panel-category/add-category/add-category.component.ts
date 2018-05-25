@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MainService } from './../../../../services/main.service';
+import { CommonService } from './../../../../services/common.service';
 
 @Component({
   selector: 'app-add-category',
@@ -11,12 +12,15 @@ export class AddCategoryComponent implements OnInit {
 
   @Input() public categories;
   @Input() public loading;
+  @Output() private refresh = new EventEmitter();
+  @ViewChild('form') addFormViewChild;
   seletedSubCategories = [];
   addForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private mainService: MainService
+    private mainService: MainService,
+    private commonService: CommonService
   ) { }
 
   ngOnInit() {
@@ -59,11 +63,11 @@ export class AddCategoryComponent implements OnInit {
   /**
    * @description This function sends category data to add to server
    */
-  addCategory() {
+  async addCategory() {
     if (this.addForm.valid) {
 
       try {
-        this.mainService.addCategory(
+        await this.mainService.addCategory(
           this.addForm.value.title,
           this.addForm.value.slug,
           this.addForm.value.isParent,
@@ -71,7 +75,28 @@ export class AddCategoryComponent implements OnInit {
           this.addForm.value.positionMode,
           this.addForm.value.index
         );
-      } catch (error) { }
+        // Reset Form
+        this.addFormViewChild.resetForm();
+
+        this.refresh.emit();
+      } catch (error) {
+
+        console.log(error);
+        if (error.staus == 0) {
+          this.commonService.showSnackBar('خطا در اتصال به سرور!', 'فهمیدم');
+        } else {
+
+          switch (error.error) {
+            case 'ParentNotExists':
+              this.commonService.showSnackBar('دسته ی مادر انتخاب شده وجود ندارد!', 'فهمیدم');
+              break;
+            default:
+              this.commonService.showSnackBar('مشکلی در روند افزودن دسته به وجود آمده است.', 'فهمیدم');
+              break;
+          }
+
+        }
+      }
 
     } else {
       this.addForm.updateValueAndValidity()

@@ -26,6 +26,7 @@ export class PanelCategoryComponent implements OnInit {
    * @description Gets all categories data to display on list
    */
   async getData() {
+    console.log('Ok');
     this.loading = true;
     this.categories = await this.mainService.getCategories();
     this.categories = this.mainService.orderCategoryData(this.categories);

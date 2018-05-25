@@ -6,9 +6,9 @@
 
 <div class="content" fxLayout="row" fxLayoutAlign="space-between start">
   <div fxFlex="68">
-    <app-display-categories [categories]="categories" [loading]="loading"></app-display-categories>
+    <app-display-categories [categories]="categories" [loading]="loading" (refresh)="getData()"></app-display-categories>
   </div>
   <div fxFlex="30">
-    <app-add-category [categories]="categories" [loading]="loading"></app-add-category>
+    <app-add-category [categories]="categories" [loading]="loading" (refresh)="getData()"></app-add-category>
   </div>
 </div>

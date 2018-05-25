@@ -4,7 +4,7 @@
     <mat-spinner *ngIf="loading" [diameter]="25"></mat-spinner>
   </mat-card-header>
 
-  <form (submit)="addCategory()" fxLayout="column" fxLayoutAlign="stretch end" [formGroup]="addForm">
+  <form (submit)="addCategory()" fxLayout="column" fxLayoutAlign="stretch end" [formGroup]="addForm" #form="ngForm">
     <mat-form-field>
       <input matInput type="text" formControlName="title" placeholder="عنوان دسته" />
       <mat-error *ngIf="!addForm.value.title">
@@ -43,6 +43,7 @@
       <span fxFlex="50">
         <mat-form-field>
           <mat-select disableRipple formControlName="index" placeholder="انتخاب دسته">
+            <mat-option *ngIf="seletedSubCategories.length == 0" value="0">مقدار اولیه</mat-option>
             <mat-option *ngFor="let subCategory of seletedSubCategories" [value]="subCategory.position">{{subCategory.title}}</mat-option>
           </mat-select>
         </mat-form-field>
