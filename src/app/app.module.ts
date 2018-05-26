@@ -33,6 +33,7 @@ import { JalaaliDatePipe } from './pipes/jalaali-date.pipe';
 import { AddCategoryComponent } from './pages/panel/panel-category/add-category/add-category.component';
 import { DisplayCategoriesComponent } from './pages/panel/panel-category/display-categories/display-categories.component';
 import { OrderByIndexPipe } from './pipes/order-by-index.pipe';
+import { DeleteCategoryDialogComponent } from './pages/panel/panel-category/delete-category-dialog/delete-category-dialog.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { OrderByIndexPipe } from './pipes/order-by-index.pipe';
     JalaaliDatePipe,
     AddCategoryComponent,
     DisplayCategoriesComponent,
-    OrderByIndexPipe
+    OrderByIndexPipe,
+    DeleteCategoryDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ import { OrderByIndexPipe } from './pipes/order-by-index.pipe';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    DeleteCategoryDialogComponent
   ]
 })
 export class AppModule { }

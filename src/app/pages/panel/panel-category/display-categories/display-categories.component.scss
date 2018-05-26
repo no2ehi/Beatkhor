@@ -24,5 +24,25 @@ mat-list {
 
 .refresh-button {
     position: relative;
-    top: -8px;
+    top: -10px;
+}
+
+.error-container {
+    border-right: 2px solid #d50000;
+    background-color: #ffebee;
+    padding: 9px 15px;
+}
+
+.action-buttons {
+    opacity: 0;
+    transition: .15s ease all;
+    button {
+        mat-icon {
+            font-size: 1.5em;
+        }
+    }
+}
+
+.display {
+    opacity: 1;
 }

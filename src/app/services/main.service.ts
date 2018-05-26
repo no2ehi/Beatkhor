@@ -87,7 +87,8 @@ export class MainService {
             slug: category.CATEGORY_SLUG,
             position: category.CATEGORY_POSITION,
             title: category.CATEGORY_TITLE,
-            createDate: category.CATEGORY_CREATE_DATE
+            createDate: category.CATEGORY_CREATE_DATE,
+            hover: false
           });
         }
       } else {
@@ -104,12 +105,14 @@ export class MainService {
         position: input.CATEGORY_GROUP_POSITION,
         title: input.CATEGORY_GROUP_TITLE,
         createDate: input.CATEGORY_GROUP_CREATE_DATE,
+        hover: false,
         categories: [{
           id: input.CATEGORY_ID,
           slug: input.CATEGORY_SLUG,
           position: input.CATEGORY_POSITION,
           title: input.CATEGORY_TITLE,
-          createDate: input.CATEGORY_CREATE_DATE
+          createDate: input.CATEGORY_CREATE_DATE,
+          hover: false
         }]
       };
     }

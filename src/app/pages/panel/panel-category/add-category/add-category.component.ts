@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MainService } from './../../../../services/main.service';
 import { CommonService } from './../../../../services/common.service';
@@ -8,10 +8,11 @@ import { CommonService } from './../../../../services/common.service';
   templateUrl: './add-category.component.html',
   styleUrls: ['./add-category.component.scss']
 })
-export class AddCategoryComponent implements OnInit {
+export class AddCategoryComponent implements OnInit, OnChanges {
 
   @Input() public categories;
   @Input() public loading;
+  @Input() public error;
   @Output() private refresh = new EventEmitter();
   @ViewChild('form') addFormViewChild;
   seletedSubCategories = [];
@@ -25,6 +26,17 @@ export class AddCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // Disable form if there is an error in getting data
+    if (this.addForm && changes.error) {
+      if (changes.error.currentValue) {
+        this.addForm.disable();
+      } else {
+        this.addForm.enable();
+      }
+    }
   }
 
   /**
@@ -44,7 +56,7 @@ export class AddCategoryComponent implements OnInit {
 
   /**
    * @description This makes the form input required only if category is parent
-   * @param input 
+   * @param {FormControl} input 
    * @returns null If input is valid
    */
   requiredIfIsParent(input: FormControl) {

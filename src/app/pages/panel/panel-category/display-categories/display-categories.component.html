@@ -8,28 +8,44 @@
     </button>
   </mat-card-header>
 
-  <mat-list role="list">
+  <div *ngIf="error" class="error-container" fxLayoutAlign="start center">
+    <span>مشکلی در دریافت داده ها به وجود آمده است.</span>
+  </div>
+
+  <mat-list role="list" *ngIf="!error">
     <ng-container *ngFor="let categoryGroup of categories | orderByIndex">
 
-      <mat-list-item role="listitem" class="serviceGroupList" [style.border-right]="'3px solid ' + categoryGroup.uiColor" [style.background-color]="categoryGroup.backUiColor">
+      <mat-list-item role="listitem" class="serviceGroupList" [style.border-right]="'3px solid ' + categoryGroup.uiColor" [style.background-color]="categoryGroup.backUiColor"
+        (mouseover)="toggleHover(categoryGroup)" (mouseout)="toggleHover(categoryGroup)">
         <div fxFlex="100" fxLayoutAlign="space-between center">
           <span>{{ categoryGroup.title }}</span>
-          <button mat-icon-button>
-            <mat-icon class="btn-icon" color="warn">delete</mat-icon>
-          </button>
+          <span class="action-buttons" [class.display]="categoryGroup.hover">
+            <button mat-icon-button>
+              <mat-icon class="btn-icon">edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteCategory(categoryGroup)">
+              <mat-icon class="btn-icon" color="warn">delete</mat-icon>
+            </button>
+          </span>
         </div>
       </mat-list-item>
 
       <mat-list>
-        <mat-list-item class="subCategory" *ngFor="let category of categoryGroup.categories | orderByIndex; let i = index" fxFlex="100">
+        <mat-list-item class="subCategory" *ngFor="let category of categoryGroup.categories | orderByIndex; let i = index" (mouseover)="toggleHover(category)"
+          (mouseout)="toggleHover(category)" fxFlex="100">
           <span fxFlex="10">{{category.id | persianNumber}}</span>
           <span fxFlex="25">{{category.title}}</span>
           <span fxFlex="25" fxLayoutAlign="center center">{{category.slug}}</span>
           <span fxFlex="25" fxLayoutAlign="center center">{{category.createDate | jalaaliDate}}</span>
           <span fxFlex="15" fxLayoutAlign="end center">
-            <button mat-icon-button>
-              <mat-icon class="btn-icon">more_vert</mat-icon>
-            </button>
+            <span class="action-buttons" [class.display]="category.hover">
+              <button mat-icon-button>
+                <mat-icon class="btn-icon">edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteCategory(category)">
+                <mat-icon class="btn-icon" color="warn">delete</mat-icon>
+              </button>
+            </span>
           </span>
           <mat-divider *ngIf="i!==(categoryGroup.categories.length - 1)"></mat-divider>
         </mat-list-item>

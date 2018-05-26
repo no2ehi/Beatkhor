@@ -49,7 +49,7 @@
         </mat-form-field>
       </span>
     </span>
-    <button [disabled]="addForm.invalid" mat-button color="primary" type="submit">
+    <button [disabled]="addForm.invalid" *ngIf="!error" mat-button color="primary" type="submit">
       <mat-icon>add</mat-icon>افزودن دسته
     </button>
   </form>

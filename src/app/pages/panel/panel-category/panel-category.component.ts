@@ -11,6 +11,7 @@ export class PanelCategoryComponent implements OnInit {
 
   categories = [];
   loading = true;
+  error = false;
 
   constructor(
     private titleService: Title,
@@ -26,12 +27,18 @@ export class PanelCategoryComponent implements OnInit {
    * @description Gets all categories data to display on list
    */
   async getData() {
-    console.log('Ok');
-    this.loading = true;
-    this.categories = await this.mainService.getCategories();
-    this.categories = this.mainService.orderCategoryData(this.categories);
-    this.loading = false;
-    console.log(this.categories);
+
+    try {
+      this.loading = true;
+      this.categories = await this.mainService.getCategories();
+      this.categories = this.mainService.orderCategoryData(this.categories);
+      this.error = false;
+      this.loading = false;
+    } catch (error) {
+      this.loading = false;
+      this.error = true;
+    }
+
   }
 
 }
