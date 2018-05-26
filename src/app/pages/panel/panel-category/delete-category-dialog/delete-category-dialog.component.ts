@@ -19,19 +19,49 @@ export class DeleteCategoryDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<DeleteCategoryDialogComponent>
   ) { }
 
-  ngOnInit() {
-    console.log(this.data);
-  }
+  ngOnInit() { }
 
   /**
    * @description Requests to delete category group
    */
-  deleteCategory() {
-    let isParent = false;
+  async deleteCategory() {
+    let isParent = false,
+      statement = 'دسته‌ی';
     if (this.data.categories) {
       isParent = true;
+      statement = 'سردسته‌ی';
     }
-    console.log(isParent, this.data.id);
+
+    try {
+      this.loading = true;
+      await this.mainService.deleteCategory(this.data.id, isParent);
+      this.loading = false;
+
+      if (isParent) {
+        this.commonService.showSnackBar('سر دسته و زیر مجموعه‌ها با موفقیت حذف شدند.', 'فهمیدم');
+      } else {
+        this.commonService.showSnackBar('دسته با موفقیت حذف شد.', 'فهمیدم');
+      }
+      this.dialogRef.close(true);
+    } catch (error) {
+      if (error.status == 0) {
+        this.commonService.showSnackBar('خطا در اتصال به سرور!', 'فهمیدم');
+      } else {
+        switch (error.error) {
+          case 'CategoryGroupNotExists':
+            this.commonService.showSnackBar(`خطا! ${statement} مورد نظر وجود ندارد.`, 'فهمیدم');
+            break;
+          case 'CategoryNotExists':
+            this.commonService.showSnackBar(`خطا! ${statement} مورد نظر وجود ندارد.`, 'فهمیدم');
+            break;
+          default:
+            this.commonService.showSnackBar(`خطا! مشکلی در حذف ${statement} به وجود آمده است.`, 'فهمیدم');
+            console.log(error);
+        }
+      }
+      this.loading = false;
+      this.dialogRef.close(false);
+    }
   }
 
 }

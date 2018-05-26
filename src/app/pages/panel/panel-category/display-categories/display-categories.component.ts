@@ -47,6 +47,12 @@ export class DisplayCategoriesComponent implements OnInit {
       width: '360px',
       data: category
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.refresh.emit();
+      }
+    });
   }
 
 }

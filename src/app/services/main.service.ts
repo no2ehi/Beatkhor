@@ -70,6 +70,18 @@ export class MainService {
   }
 
   /**
+   * @description A http request to delete categories
+   * @param categoryId 
+   * @param isParent 
+   */
+  deleteCategory(categoryId: number, isParent: boolean): Promise<string> {
+    return this.http.delete(
+      environment.API_URL + `/app/category?isParent=${isParent}&categoryId=${categoryId}`,
+      { responseType: 'text' }
+    ).toPromise();
+  }
+
+  /**
    * @description orders given data in the best way to use
    * @param categories
    * @returns orderedData
