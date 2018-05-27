@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MainService } from './../../../../services/main.service';
-import { DeleteCategoryDialogComponent } from '../delete-category-dialog/delete-category-dialog.component';
+import { DeleteCategoryDialogComponent } from './../delete-category-dialog/delete-category-dialog.component';
+import { EditCategoryDialogComponent } from './../edit-category-dialog/edit-category-dialog.component';
 
 @Component({
   selector: 'app-display-categories',
@@ -52,6 +53,17 @@ export class DisplayCategoriesComponent implements OnInit {
       if (result) {
         this.refresh.emit();
       }
+    });
+  }
+
+  /**
+ * @description Opens edit dialog to edit selected category/caregoryGroup
+ * @param {object} category 
+ */
+  editCategory(category) {
+    const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
+      width: '360px',
+      data: category
     });
   }
 

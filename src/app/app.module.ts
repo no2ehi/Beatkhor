@@ -34,6 +34,7 @@ import { AddCategoryComponent } from './pages/panel/panel-category/add-category/
 import { DisplayCategoriesComponent } from './pages/panel/panel-category/display-categories/display-categories.component';
 import { OrderByIndexPipe } from './pipes/order-by-index.pipe';
 import { DeleteCategoryDialogComponent } from './pages/panel/panel-category/delete-category-dialog/delete-category-dialog.component';
+import { EditCategoryDialogComponent } from './pages/panel/panel-category/edit-category-dialog/edit-category-dialog.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { DeleteCategoryDialogComponent } from './pages/panel/panel-category/dele
     AddCategoryComponent,
     DisplayCategoriesComponent,
     OrderByIndexPipe,
-    DeleteCategoryDialogComponent
+    DeleteCategoryDialogComponent,
+    EditCategoryDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +83,8 @@ import { DeleteCategoryDialogComponent } from './pages/panel/panel-category/dele
   bootstrap: [AppComponent],
   entryComponents: [
     ConfirmDialogComponent,
-    DeleteCategoryDialogComponent
+    DeleteCategoryDialogComponent,
+    EditCategoryDialogComponent
   ]
 })
 export class AppModule { }

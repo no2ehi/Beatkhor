@@ -20,7 +20,7 @@
         <div fxFlex="100" fxLayoutAlign="space-between center">
           <span>{{ categoryGroup.title }}</span>
           <span class="action-buttons" [class.display]="categoryGroup.hover">
-            <button mat-icon-button>
+            <button mat-icon-button (click)="editCategory(categoryGroup)">
               <mat-icon class="btn-icon">edit</mat-icon>
             </button>
             <button mat-icon-button (click)="deleteCategory(categoryGroup)">
@@ -39,7 +39,7 @@
           <span fxFlex="25" fxLayoutAlign="center center">{{category.createDate | jalaaliDate}}</span>
           <span fxFlex="15" fxLayoutAlign="end center">
             <span class="action-buttons" [class.display]="category.hover">
-              <button mat-icon-button>
+              <button mat-icon-button (click)="editCategory(category)">
                 <mat-icon class="btn-icon">edit</mat-icon>
               </button>
               <button mat-icon-button (click)="deleteCategory(category)">
