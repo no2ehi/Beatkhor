@@ -74,7 +74,7 @@ export class MainService {
    * @param categoryId 
    * @param isParent 
    */
-  deleteCategory(categoryId: number, isParent: boolean): Promise<string> {
+  deleteCategory(categoryId: number, isParent: number): Promise<string> {
     return this.http.delete(
       environment.API_URL + `/app/category?isParent=${isParent}&categoryId=${categoryId}`,
       { responseType: 'text' }

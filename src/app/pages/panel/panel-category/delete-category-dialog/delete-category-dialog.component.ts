@@ -25,10 +25,10 @@ export class DeleteCategoryDialogComponent implements OnInit {
    * @description Requests to delete category group
    */
   async deleteCategory() {
-    let isParent = false,
+    let isParent = 0,
       statement = 'دسته‌ی';
     if (this.data.categories) {
-      isParent = true;
+      isParent = 1;
       statement = 'سردسته‌ی';
     }
 
