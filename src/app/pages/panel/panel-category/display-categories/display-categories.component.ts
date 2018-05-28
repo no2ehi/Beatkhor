@@ -62,7 +62,7 @@ export class DisplayCategoriesComponent implements OnInit {
  */
   editCategory(category) {
     const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
-      width: '360px',
+      width: '320px',
       data: category
     });
   }

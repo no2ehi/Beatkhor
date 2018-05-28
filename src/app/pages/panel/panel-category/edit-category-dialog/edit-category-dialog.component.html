@@ -1,8 +1,41 @@
 <h1 mat-dialog-title class="title" *ngIf="!loading">ویرایش دسته‌بندی</h1>
 
+<div class="editor-container" *ngIf="!loading">
+  <form [formGroup]="editForm">
+    <mat-form-field>
+      <input matInput formControlName="title" placeholder="عنوان">
+      <mat-error *ngIf="!editForm.controls['title'].value">
+        این فیلد
+        <strong>الزامی</strong> است.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="slug" placeholder="نشان">
+      <mat-error *ngIf="!editForm.controls['slug'].value">
+        این فیلد
+        <strong>الزامی</strong> است.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="isParent">
+      <input matInput formControlName="color" placeholder="رنگ" class="left-align">
+      <mat-error *ngIf="!editForm.controls['color'].value">
+        این فیلد
+        <strong>الزامی</strong> است.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="isParent">
+      <input matInput formControlName="backColor" placeholder="رنگ پس‌ زمینه" class="left-align">
+      <mat-error *ngIf="!editForm.controls['backColor'].value">
+        این فیلد
+        <strong>الزامی</strong> است.
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
 <div mat-dialog-actions *ngIf="!loading">
   <button mat-button [mat-dialog-close]="false">بی‌خیال</button>
-  <button mat-button (click)="editCategory()" cdkFocusInitial>بله</button>
+  <button mat-button (click)="editCategory()" [disabled]="editForm.invalid" cdkFocusInitial>اعمال</button>
 </div>
 
 <div *ngIf="loading" fxLayout="row">
