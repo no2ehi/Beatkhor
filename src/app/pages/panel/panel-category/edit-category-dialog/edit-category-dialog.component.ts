@@ -40,6 +40,42 @@ export class EditCategoryDialogComponent implements OnInit {
     });
   }
 
-  editCategory() { }
+  async editCategory() {
+
+    try {
+      this.loading = true;
+      await this.mainService.editCategory(
+        this.isParent,
+        this.data.id,
+        this.editForm.value.title,
+        this.editForm.value.slug,
+        this.editForm.value.color,
+        this.editForm.value.backColor
+      );
+      this.loading = false;
+      this.dialogRef.close(true);
+      this.commonService.showSnackBar('تغییرات با موفقیت اعمال شد.', 'فهمیدم');
+    } catch (error) {
+      this.loading = false;
+      if (error.status === 0) {
+        this.commonService.showSnackBar('خطا در اتصال به سرور!', 'فهمیدم');
+      } else {
+        switch (error.error) {
+          case 'Unauthorized':
+            this.commonService.showSnackBar('شما وارد نشده‌اید ابتدا وارد شوید.', 'فهمیدم');
+            break;
+          case 'CategoryGroupNotExists':
+            this.commonService.showSnackBar('سر دسته‌ی مورد نظر وجود ندارد!', 'فهمیدم');
+            break;
+          case 'CategoryNotExists':
+            this.commonService.showSnackBar('دسته‌ی مورد نظر وجود ندارد!', 'فهمیدم');
+            break;
+          default:
+            this.commonService.showSnackBar('مشکلی در روند ویرایش به وجود آمده است!', 'فهمیدم');
+        }
+      }
+
+    }
+  }
 
 }

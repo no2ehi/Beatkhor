@@ -82,6 +82,23 @@ export class MainService {
   }
 
   /**
+   * @description A http request to edit categories
+   * @param categoryId 
+   * @param isParent 
+   */
+  editCategory(
+    isParent: boolean, id: number,
+    title: string, slug: string,
+    color?: string, backColor?: string
+  ): Promise<string> {
+    return this.http.patch(
+      environment.API_URL + `/app/category`,
+      { isParent, id, title, slug, color: color || '', backColor: backColor || '' },
+      { responseType: 'text' }
+    ).toPromise();
+  }
+
+  /**
    * @description orders given data in the best way to use
    * @param categories
    * @returns orderedData
