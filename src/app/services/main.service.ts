@@ -28,7 +28,7 @@ export class MainService {
    */
   registerUser(nickName: string, email: string, password: string, role: string): Promise<object> {
     const data = { nickName, email, password, role };
-    return this.http.post<object>(environment.API_URL + '/app/user/register', data).toPromise();
+    return this.http.post<object>(environment.API_URL + '/api/user/register', data).toPromise();
   }
 
   /**
@@ -38,18 +38,18 @@ export class MainService {
    */
   loginUser(email: string, password: string): Promise<object> {
     const data = { email, password };
-    return this.http.post<object>(environment.API_URL + '/app/user/login', data).toPromise();
+    return this.http.post<object>(environment.API_URL + '/api/user/login', data).toPromise();
   }
 
   /**
    * @description A http request to get all categories
    */
   getCategories(): Promise<object[]> {
-    return this.http.get<object[]>(environment.API_URL + '/app/category').toPromise();
+    return this.http.get<object[]>(environment.API_URL + '/api/category').toPromise();
   }
 
   /**
-   * @description A http request to get all categories
+   * @description A http request to add categories
    * @param title 
    * @param slug 
    * @param isParent 
@@ -64,7 +64,7 @@ export class MainService {
   ): Promise<string> {
     const data = { title, slug, isParent, parentId, positionMode, index };
     return this.http.put(
-      environment.API_URL + '/app/category', data,
+      environment.API_URL + '/api/category/add', data,
       { responseType: 'text' }
     ).toPromise();
   }
@@ -76,7 +76,7 @@ export class MainService {
    */
   deleteCategory(categoryId: number, isParent: number): Promise<string> {
     return this.http.delete(
-      environment.API_URL + `/app/category?isParent=${isParent}&categoryId=${categoryId}`,
+      environment.API_URL + `/api/category/delete?isParent=${isParent}&categoryId=${categoryId}`,
       { responseType: 'text' }
     ).toPromise();
   }
@@ -92,7 +92,7 @@ export class MainService {
     color?: string, backColor?: string
   ): Promise<string> {
     return this.http.patch(
-      environment.API_URL + `/app/category`,
+      environment.API_URL + `/api/category/edit`,
       { isParent, id, title, slug, color: color || '', backColor: backColor || '' },
       { responseType: 'text' }
     ).toPromise();
