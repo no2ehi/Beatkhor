@@ -1,0 +1,29 @@
+.title {
+    direction: rtl;
+    font-size: 1.3em;
+    margin-bottom: 3px;
+}
+
+.mat-dialog-actions {
+    float: left;
+}
+
+.prompet {
+    margin-right: 18px;
+}
+
+.editor-container {
+    width: 100%;
+
+    form {
+        mat-form-field {
+            width: 100%;
+            margin: 4px 0;
+        }
+
+        input.left-align {
+            text-align: left;
+            direction: ltr;
+        }
+    }
+}

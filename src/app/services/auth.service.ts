@@ -62,6 +62,16 @@ export class AuthService {
         adminTitle: 'دسته بندی‌‌ها',
         icon: 'category',
         roles: ['administrator']
+      },
+      'manage_genres': {
+        path: 'manage_genres',
+        routerLink: '/p/manage_genres',
+        token: true,
+        userMenu: false,
+        adminMenu: true,
+        adminTitle: 'ژانر ها',
+        icon: 'dashboard',
+        roles: ['administrator']
       }
     };
   }

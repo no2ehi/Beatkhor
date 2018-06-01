@@ -1,0 +1,56 @@
+<mat-card>
+  <mat-card-header fxLayoutAlign="space-between start">
+    <mat-card-title>افزودن ژانر</mat-card-title>
+    <mat-spinner *ngIf="loading" [diameter]="25"></mat-spinner>
+  </mat-card-header>
+
+  <form (submit)="addGenre()" fxLayout="column" fxLayoutAlign="stretch end" [formGroup]="addForm" #form="ngForm">
+    <mat-form-field>
+      <input matInput type="text" formControlName="title" placeholder="عنوان ژانر" />
+      <mat-error *ngIf="!addForm.value.title">
+        این فیلد
+        <strong>الزامی</strong>
+        است.
+      </mat-error>
+      <mat-error *ngIf="addForm.controls['title'].invalid && addForm.value.title">
+        مقدار وارد شده معتبر نیست!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" formControlName="slug" class="left-align" placeholder="نشان ژانر" />
+      <mat-error *ngIf="!addForm.value.slug">
+        این فیلد
+        <strong>الزامی</strong>
+        است.
+      </mat-error>
+      <mat-error *ngIf="addForm.controls['slug'].invalid && addForm.value.slug">
+        مقدار وارد شده معتبر نیست!
+      </mat-error>
+    </mat-form-field>
+    <mat-checkbox class="full-width" (change)="isParentChange()" formControlName="isParent" color="accent">ژانر مادر است.</mat-checkbox>
+    <mat-form-field *ngIf="!addForm.value.isParent">
+      <mat-select disableRipple (selectionChange)="updatePositionSelection()" formControlName="parentId" placeholder="انتخاب ژانر مادر">
+        <mat-option *ngFor="let genre of genres" [value]="genre.id">{{genre.title}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <span class="full-width position-container" fxLayoutAlign="start center">
+      <span fxFlex="50">
+        <mat-button-toggle-group color="primary" formControlName="positionMode" name="position" aria-label="position">
+          <mat-button-toggle value="before">قبل از</mat-button-toggle>
+          <mat-button-toggle value="after">بعد از</mat-button-toggle>
+        </mat-button-toggle-group>
+      </span>
+      <span fxFlex="50">
+        <mat-form-field>
+          <mat-select disableRipple formControlName="index" placeholder="انتخاب ژانر">
+            <mat-option *ngIf="selectedSubGenres.length == 0" value="0">مقدار اولیه</mat-option>
+            <mat-option *ngFor="let subGenre of selectedSubGenres" [value]="subGenre.position">{{subGenre.title}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </span>
+    </span>
+    <button [disabled]="addForm.invalid" *ngIf="!error" mat-button color="primary" type="submit">
+      <mat-icon>add</mat-icon>افزودن ژانر
+    </button>
+  </form>
+</mat-card>

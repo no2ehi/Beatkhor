@@ -1,0 +1,14 @@
+<mat-toolbar [class.mat-elevation-z1]="true" class="content-toolbar">
+  <span class="navbar-title">
+    ژانر ها
+  </span>
+</mat-toolbar>
+
+<div class="content" fxLayout="row" fxLayoutAlign="space-between start">
+  <div fxFlex="68">
+    <app-display-genres [genres]="genres" [loading]="loading" (refresh)="getData()" [error]="error"></app-display-genres>
+  </div>
+  <div fxFlex="30">
+    <app-add-genre [genres]="genres" [loading]="loading" (refresh)="getData()" [error]="error"></app-add-genre>
+  </div>
+</div>

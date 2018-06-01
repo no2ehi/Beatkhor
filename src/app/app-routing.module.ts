@@ -8,6 +8,7 @@ import { IndexComponent } from './pages/index/index.component';
 import { PanelDashboardComponent } from './pages/panel/panel-dashboard/panel-dashboard.component';
 import { PanelPostsComponent } from './pages/panel/panel-posts/panel-posts.component';
 import { PanelCategoryComponent } from './pages/panel/panel-category/panel-category.component';
+import { PanelGenreComponent } from './pages/panel/panel-genre/panel-genre.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,11 @@ const routes: Routes = [
       {
         path: 'manage_categories',
         component: PanelCategoryComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'manage_genres',
+        component: PanelGenreComponent,
         canActivate: [AuthService]
       },
       {

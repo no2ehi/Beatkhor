@@ -1,0 +1,57 @@
+<mat-card>
+
+  <mat-card-header fxLayoutAlign="space-between start">
+    <mat-card-title>لیست ژانر ها</mat-card-title>
+    <mat-spinner *ngIf="loading" [diameter]="25"></mat-spinner>
+    <button mat-icon-button *ngIf="!loading" (click)="refreshData()" class="refresh-button">
+      <mat-icon class="btn-icon">refresh</mat-icon>
+    </button>
+  </mat-card-header>
+
+  <div *ngIf="error" class="error-container" fxLayoutAlign="start center">
+    <span>مشکلی در دریافت داده ها به وجود آمده است.</span>
+  </div>
+
+  <mat-list role="list" *ngIf="!error">
+    <ng-container *ngFor="let genreGroup of genres | orderByIndex">
+
+      <mat-list-item role="listitem" class="serviceGroupList" [style.border-right]="'3px solid ' + genreGroup.uiColor" [style.background-color]="genreGroup.backUiColor"
+        (mouseover)="toggleHover(genreGroup)" (mouseout)="toggleHover(genreGroup)">
+        <div fxFlex="100" fxLayoutAlign="space-between center">
+          <span>{{ genreGroup.title }}</span>
+          <span class="action-buttons" [class.display]="genreGroup.hover">
+            <button mat-icon-button (click)="editGenre(genreGroup)">
+              <mat-icon class="btn-icon">edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteGenre(genreGroup)">
+              <mat-icon class="btn-icon" color="warn">delete</mat-icon>
+            </button>
+          </span>
+        </div>
+      </mat-list-item>
+
+      <mat-list>
+        <mat-list-item class="subCategory" *ngFor="let genre of genreGroup.genres | orderByIndex; let i = index" (mouseover)="toggleHover(genre)"
+          (mouseout)="toggleHover(genre)" fxFlex="100">
+          <span fxFlex="10">{{genre.id | persianNumber}}</span>
+          <span fxFlex="25">{{genre.title}}</span>
+          <span fxFlex="25" fxLayoutAlign="center center">{{genre.slug}}</span>
+          <span fxFlex="25" fxLayoutAlign="center center">{{genre.createDate | jalaaliDate}}</span>
+          <span fxFlex="15" fxLayoutAlign="end center">
+            <span class="action-buttons" [class.display]="genre.hover">
+              <button mat-icon-button (click)="editGenre(genre)">
+                <mat-icon class="btn-icon">edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteGenre(genre)">
+                <mat-icon class="btn-icon" color="warn">delete</mat-icon>
+              </button>
+            </span>
+          </span>
+          <mat-divider *ngIf="i!==(genreGroup.genres.length - 1)"></mat-divider>
+        </mat-list-item>
+      </mat-list>
+
+    </ng-container>
+  </mat-list>
+
+</mat-card>

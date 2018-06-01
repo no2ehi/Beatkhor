@@ -1,20 +1,21 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MainService } from './../../../../services/main.service';
-import { DeleteCategoryDialogComponent } from './../delete-category-dialog/delete-category-dialog.component';
-import { EditCategoryDialogComponent } from './../edit-category-dialog/edit-category-dialog.component';
+import { DeleteGenreDialogComponent } from '../delete-genre-dialog/delete-genre-dialog.component';
+import { EditGenreDialogComponent } from '../edit-genre-dialog/edit-genre-dialog.component';
 
 @Component({
-  selector: 'app-display-categories',
-  templateUrl: './display-categories.component.html',
-  styleUrls: ['./display-categories.component.scss']
+  selector: 'app-display-genres',
+  templateUrl: './display-genres.component.html',
+  styleUrls: ['./display-genres.component.scss']
 })
-export class DisplayCategoriesComponent implements OnInit {
+export class DisplayGenresComponent implements OnInit {
 
-  @Input() public categories;
+  @Input() public genres;
   @Input() public loading;
   @Input() public error;
   @Output() public refresh = new EventEmitter();
+
 
   constructor(
     private mainService: MainService,
@@ -24,8 +25,9 @@ export class DisplayCategoriesComponent implements OnInit {
   ngOnInit() { }
 
   /**
-   * @description emits an event to refresh category data
-   */
+    * @description emits an event to refresh genre data
+    */
+
   refreshData() {
     this.refresh.emit();
   }
@@ -39,13 +41,13 @@ export class DisplayCategoriesComponent implements OnInit {
   }
 
   /**
-   * @description Opens confirmation dialog to delete selected category/caregoryGroup
-   * @param {object} category 
+   * @description Opens confirmation dialog to delete selected genre/genreGroup
+   * @param {object} genre 
    */
-  deleteCategory(category) {
-    const dialogRef = this.dialog.open(DeleteCategoryDialogComponent, {
+  deleteGenre(genre) {
+    const dialogRef = this.dialog.open(DeleteGenreDialogComponent, {
       width: '360px',
-      data: category
+      data: genre
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -56,20 +58,21 @@ export class DisplayCategoriesComponent implements OnInit {
   }
 
   /**
- * @description Opens edit dialog to edit selected category/caregoryGroup
- * @param {object} category 
- */
-  editCategory(category) {
-    const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
+  * @description Opens edit dialog to edit selected genre/genreGroup
+  * @param {object} genre 
+  */
+  editGenre(genre) {
+    const dialogRef = this.dialog.open(EditGenreDialogComponent, {
       width: '320px',
-      data: category
+      data: genre
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.refresh.emit();
       }
-    });
+    })
   }
+
 
 }

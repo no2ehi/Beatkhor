@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { isNull } from 'util';
 @Injectable()
 export class MainService {
 
@@ -148,6 +149,120 @@ export class MainService {
 
     return orderedData;
   }
+
+  /**
+   * @description A http request to get all genres
+   */
+  getGenres(): Promise<object[]> {
+    return this.http.get<object[]>(environment.API_URL + '/api/genre').toPromise();
+  }
+
+  /**
+   * @description A http request to add genres
+   * @param title 
+   * @param slug 
+   * @param isParent 
+   * @param parentId 
+   * @param positionMode 
+   * @param index 
+   */
+  addGenre(
+    title: string, slug: string,
+    isParent: boolean, parentId: string,
+    positionMode: string, index: number
+  ): Promise<string> {
+    const data = { title, slug, isParent, parentId, positionMode, index };
+    return this.http.put(
+      environment.API_URL + '/api/genre/add', data, {
+        responseType: 'text'
+      }
+    ).toPromise();
+  }
+
+
+  /**
+   * @description A http request to delete genres
+   * @param categoryId 
+   * @param isParent 
+   */
+  deleteGenere(genreId: number, isParent: number): Promise<string> {
+    return this.http.delete(
+      environment.API_URL + `/api/genre/delete?isParent=${isParent}&genereId=${genreId}`,
+      { responseType: 'text' }
+    ).toPromise();
+  }
+
+  /**
+  * @description A http request to edit genres
+  * @param categoryId 
+  * @param isParent 
+  */
+  editGenre(
+    isParent: boolean, id: number,
+    title: string, slug,
+    color?: string, backColor?: string
+  ): Promise<string> {
+    return this.http.patch(
+      environment.API_URL + `/api/category/edit`, {
+        isParent, id, title, slug, color: color || '', backColor: backColor || ''
+      },
+      { responseType: 'text' }
+    ).toPromise();
+  }
+
+  /**
+   * @description orders given data in the best way to use
+   * @param genres
+   * @returns orderedData
+   */
+  orderGenreData(genres) {
+    const orderedData = [];
+
+    for (const genre of genres) {
+      if (orderedData.length) {
+        if (genre.GENRE_GROUP_ID !== orderedData[orderedData.length - 1].id) {
+          orderedData.push(newItem(genre));
+        } else {
+          orderedData[orderedData.length - 1].genres.push({
+            id: genre.GENRE_ID,
+            slug: genre.GENRE_SLUG,
+            position: genre.GENRE_POSITION,
+            title: genre.GENRE_NAME,
+            createDate: genre.GENRE_CREATE_DATE,
+            hover: false
+          });
+        }
+      } else {
+        orderedData.push(newItem(genre));
+      }
+    }
+
+    function newItem(input) {
+      return {
+        id: input.GENRE_GROUP_ID,
+        slug: input.GENRE_GROUP_SLUG,
+        uiColor: input.UI_COLOR,
+        backUiColor: input.BACK_UI_COLOR,
+        position: input.GENRE_GROUP_POSITION,
+        title: input.GENRE_GROUP_NAME,
+        createDate: input.GENRE_GROUP_CREATE_DATE,
+        hover: false,
+        genres: [{
+          id: input.GENRE_ID,
+          slug: input.GENRE_SLUG,
+          position: input.GENRE_POSITION,
+          title: input.GENRE_NAME,
+          createDate: input.GENRE_CREATE_DATE,
+          hover: false
+        }]
+      };
+    }
+
+    return orderedData;
+  }
+
+
+
 
   /**
    * @description Clears the localstorage
